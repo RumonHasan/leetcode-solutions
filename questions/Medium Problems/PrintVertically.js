@@ -25,6 +25,7 @@ const printVertically = (s) => {
     }
     finalArray.push(verticalWord);
   }
+
   // filtering final array by removing trailing spaces
   for (let i = 0; i < finalArray.length; i++) {
     if (finalArray[i][finalArray[i].length - 1] !== ' ') {
