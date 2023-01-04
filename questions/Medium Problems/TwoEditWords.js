@@ -22,11 +22,11 @@ const twoEditWords = (queries, dictionary) => {
   // cleaning the output off similar names
   return output;
 };
-console.log(
-  twoEditWords(
-    ['tsl', 'sri', 'yyy', 'rbc', 'dda', 'qus', 'hyb', 'ilu', 'ahd'],
-    ['uyj', 'bug', 'dba', 'xbe', 'blu', 'wuo', 'tsf', 'tga']
-  )
-);
+// console.log(
+//   twoEditWords(
+//     ['tsl', 'sri', 'yyy', 'rbc', 'dda', 'qus', 'hyb', 'ilu', 'ahd'],
+//     ['uyj', 'bug', 'dba', 'xbe', 'blu', 'wuo', 'tsf', 'tga']
+//   )
+// );
 
 // leetcode 2452 ... making edits to dictionary with a limit of two in order to check with dictionary
