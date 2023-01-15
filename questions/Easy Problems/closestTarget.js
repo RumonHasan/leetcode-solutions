@@ -15,6 +15,7 @@ const closestTarget = (words, target, startIndex) => {
   let front = 0;
   let back = 0;
 
+  // closest target
   for (let i = 0; i < preArray.length; i++) {
     if (preArray[i] == target) {
       break;
