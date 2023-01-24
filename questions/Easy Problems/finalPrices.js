@@ -25,4 +25,4 @@ const finalPrices = (prices) => {
   return newDp;
 };
 
-console.log(finalPrices([8, 4, 6, 2, 3]));
+//console.log(finalPrices([8, 4, 6, 2, 3]));
