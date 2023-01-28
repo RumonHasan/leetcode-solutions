@@ -54,4 +54,4 @@ const canPlaceFlowers = (flowerbed, n) => {
 };
 
 // single iteration to plant flowers per 0 and check the adjacent elements in order to ensure whetehr things are running or not
-console.log(canPlaceFlowers([0, 0, 1, 0, 0], 1));
+// console.log(canPlaceFlowers([0, 0, 1, 0, 0], 1));
