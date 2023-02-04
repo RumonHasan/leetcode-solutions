@@ -1,6 +1,7 @@
 const maxBalloons = (text) => {
   // making as many balloons as possible
   const timeLimitExceeded = () => {
+    // using map approach
     let count = 0;
     while (map.has('b')) {
       let string = '';
@@ -37,7 +38,9 @@ const maxBalloons = (text) => {
       checkHash[text[index]] = 1;
     }
   }
-  // dividing the o and l letters by 2
+  // Main Approach: dividing largest occurence by 2 to check for validity
+
+  // initial check for whether one of the primary letters are present in the map or not.
   for (let index in target) {
     if (!checkHash[target[index]]) return 0;
   }
