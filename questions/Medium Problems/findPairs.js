@@ -1,7 +1,6 @@
 const findPairs = (nums, k) => {
   let hash = {};
   let secondHash = {};
-
   for (let index in nums) {
     secondHash[nums[index]]
       ? secondHash[nums[index]]++
