@@ -21,14 +21,14 @@ const hardestWorker = (logs, n) => {
   return Math.min(...idArray);
 };
 
-console.log(
-  hardestWorker(
-    [
-      [0, 3],
-      [2, 5],
-      [0, 9],
-      [1, 15],
-    ],
-    10
-  )
-);
+// console.log(
+//   hardestWorker(
+//     [
+//       [0, 3],
+//       [2, 5],
+//       [0, 9],
+//       [1, 15],
+//     ],
+//     10
+//   )
+// );
