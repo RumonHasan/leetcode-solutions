@@ -1,5 +1,5 @@
 const numDifferentIntegers = (word) => {
-  //   console.log(word);
+  // git add
   let integerArray = [];
   let numString = '';
   let infinityCounter = 0;
