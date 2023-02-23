@@ -10,4 +10,4 @@ const lengthOfLastWord = (s) => {
   return length;
 };
 
-console.log(lengthOfLastWord('   fly me   to   the moon  '));
+// console.log(lengthOfLastWord('   fly me   to   the moon  '));
