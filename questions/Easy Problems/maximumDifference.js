@@ -16,4 +16,4 @@ const maximumDifference = (nums) => {
   return maximumSum;
 };
 
-console.log(maximumDifference([87, 68, 91, 86, 58, 63, 43, 98, 6, 40]));
+//console.log(maximumDifference([87, 68, 91, 86, 58, 63, 43, 98, 6, 40]));
