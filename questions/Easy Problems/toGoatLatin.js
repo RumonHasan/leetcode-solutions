@@ -12,7 +12,6 @@ const toGoatLatin = (sentence) => {
   for (let index = 0; index < sentenceArray.length; index++) {
     const word = sentenceArray[index];
     if (vowel[word[0].toLowerCase()]) {
-      console.log(index);
       const newWord = word + firstSegment + ' ';
       finalString += newWord;
     } else {
