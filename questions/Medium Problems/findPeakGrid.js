@@ -5,7 +5,6 @@ const findPeakGrid = (mat) => {
       element > top && element > bottom && element > right && element > left
     );
   };
-
   for (let rowIndex = 0; rowIndex < mat.length; rowIndex++) {
     for (let colIndex = 0; colIndex < mat[rowIndex].length; colIndex++) {
       const top = rowIndex === 0 ? -1 : mat[rowIndex - 1][colIndex];
@@ -26,7 +25,6 @@ const findPeakGrid = (mat) => {
   }
   return peakIndex[0];
 };
-
 // console.log(
 //   findPeakGrid([
 //     [41, 8, 2, 48, 18],
