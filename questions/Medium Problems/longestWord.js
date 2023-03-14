@@ -31,6 +31,6 @@ const longestWord = (words) => {
   return finalArray[0] === undefined ? '' : '';
 };
 
-console.log(
-  longestWord(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple'])
-);
+// console.log(
+//   longestWord(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple'])
+// );

@@ -32,3 +32,15 @@ const basicObject = {
 basicObject.getDetails('new');
 console.log(basicObject);
 console.log(basicObject.name);
+
+// juvena function
+let optionList = [{}];
+// border select function
+function select(id) {
+  console.log(this.optionList);
+  return (this.optionList = [...this.optionList].map((option) =>
+    option.id === id
+      ? { ...option, borderColor: '#0045B6' }
+      : { ...option, borderColor: '#F2F2F2' }
+  ));
+}
