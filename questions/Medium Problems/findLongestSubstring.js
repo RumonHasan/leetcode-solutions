@@ -21,7 +21,6 @@ const findTheLongestSubstring = (s) => {
     let secondIndex = 0;
     let j = index;
     while (j < s.length) {
-      console.log('second', secondIndex, 'j', j);
       if (checkSubstring(s.slice(secondIndex, j + 1))) {
         console.log(s.slice(secondIndex, j + 1));
         return j - secondIndex + 1;
