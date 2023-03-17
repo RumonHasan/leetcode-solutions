@@ -4,6 +4,7 @@ const robTwo = (nums) => {
   if (nums.length === 1) {
     return nums[0];
   }
+  // getting the maximum profit margin by creating a dp based solution for the different chunks of the array
   const maxProfitFromRobbery = (chunk) => {
     let robberDp = new Array(chunk.length).fill(0);
     for (let index = 0; index < chunk.length; index++) {
