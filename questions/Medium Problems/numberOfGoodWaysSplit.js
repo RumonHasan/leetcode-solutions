@@ -42,4 +42,4 @@ const numSplits = (s) => {
 
   console.log(optimized(s));
 };
-console.log(numSplits('aacaba'));
+// console.log(numSplits('aacaba'));
