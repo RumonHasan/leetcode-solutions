@@ -20,4 +20,4 @@ const maxConOnes = (nums) => {
   return maxOneCount;
 };
 
-console.log(maxConOnes([1, 1, 0, 1, 1, 1]));
+//console.log(maxConOnes([1, 1, 0, 1, 1, 1]));
