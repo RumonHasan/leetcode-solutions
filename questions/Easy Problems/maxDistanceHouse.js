@@ -19,4 +19,4 @@ const maxDistanceHouse = (colors) => {
   return maxDistance;
 };
 
-console.log(maxDistanceHouse([1, 8, 3, 8, 3]));
+//console.log(maxDistanceHouse([1, 8, 3, 8, 3]));
