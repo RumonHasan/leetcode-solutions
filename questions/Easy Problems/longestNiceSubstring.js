@@ -1,5 +1,4 @@
 const longestNiceSubstring = (s) => {
-  console.log(s);
   let end = 0;
   const checkSubstring = (sub) => {
     let subArray = new Array(...new Set([...sub.split('')]));
@@ -31,6 +30,34 @@ const longestNiceSubstring = (s) => {
     collection.map((word) => word.length)
   );
   return collection.filter((word) => word.length === maxLen)[0];
+};
+
+// my optimized version
+const optimizedVersionHuman = (s) => {};
+
+// chat gpt
+const longestNiceSubstrinGPT = (s) => {
+  let longest = '';
+  for (let i = 0; i < s.length; i++) {
+    let set = new Set();
+    let map = new Map();
+    for (let j = i; j < s.length; j++) {
+      let char = s[j];
+      set.add(char);
+      map.set(char, (map.get(char) || 0) + 1);
+      if (
+        set.has(char.toLowerCase()) &&
+        set.has(char.toUpperCase()) &&
+        !map.has(char.toLowerCase()) &&
+        !map.has(char.toUpperCase())
+      ) {
+        if (j - i + 1 > longest.length) {
+          longest = s.substring(i, j + 1);
+        }
+      }
+    }
+  }
+  return longest;
 };
 
 //console.log(longestNiceSubstring('c'));
