@@ -14,4 +14,4 @@ const rotate = (nums, k) => {
   return nums;
 };
 // rotate the array to the right by k places
-console.log(rotate([1, 2], 3));
+//console.log(rotate([1, 2], 3));
