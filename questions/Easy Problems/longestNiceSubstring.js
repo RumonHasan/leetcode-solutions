@@ -33,7 +33,28 @@ const longestNiceSubstring = (s) => {
 };
 
 // my optimized version
-const optimizedVersionHuman = (s) => {};
+// const optimizedVersionHuman = (s) => {
+//   console.log(s);
+//   let resultString = '';
+
+//   for (let index = 0; index < s.length; index++) {
+//     let wordSet = new Set();
+//     wordSet.add(s[index]); // adds the initial character to the set inorder to check with the remsining substring
+//     for (let subIndex = index; subIndex < s.length; subIndex++) {
+//       let char = s[subIndex];
+//       const checkSlice = s.slice(index, subIndex + 1);
+//       wordSet.add(char);
+//       if (wordSet.has(char.toLowerCase()) && wordSet.has(char.toUpperCase())) {
+//         console.log(subIndex, index, checkSlice);
+//       } else {
+//       }
+//     }
+//   }
+
+//   return resultString;
+// };
+
+console.log(optimizedVersionHuman('YazaAay'));
 
 // chat gpt
 const longestNiceSubstrinGPT = (s) => {
@@ -60,4 +81,4 @@ const longestNiceSubstrinGPT = (s) => {
   return longest;
 };
 
-//console.log(longestNiceSubstring('c'));
+//console.log(longestNiceSubstrinGPT('YazaAay'));
