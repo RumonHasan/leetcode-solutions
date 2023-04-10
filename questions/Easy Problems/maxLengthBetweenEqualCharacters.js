@@ -7,11 +7,6 @@ const maxLenBetweenEqualChars = (s) => {
     } else {
       distanceObject[s[index]] = [index];
     }
-    // if (distanceMap.has(s[index])) {
-    //   distanceMap.get(s[index]).push(index);
-    // } else {
-    //   distanceMap.set(s[index], [index]);
-    // }
   }
   let maxLength = -1;
   for (let [_, value] of Object.entries(distanceObject)) {
