@@ -22,4 +22,4 @@ const areAlmostEqual = (s1, s2) => {
   return false;
 };
 
-console.log(areAlmostEqual('npv', 'zpn'));
+//console.log(areAlmostEqual('npv', 'zpn'));
