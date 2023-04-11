@@ -18,7 +18,7 @@ const wordPattern = (pattern, s) => {
   for (let index in pattern) {
     let patternChar = pattern[index];
     let sWord = array[index];
-
+    // checked the word against the existing pattern
     if (patternMap.has(sWord)) {
       const check = patternMap.get(sWord);
       if (check !== patternChar) {
@@ -30,4 +30,4 @@ const wordPattern = (pattern, s) => {
   return true;
 };
 
-console.log(wordPattern('aba', 'dog cat cat'));
+//console.log(wordPattern('aba', 'dog cat cat'));
