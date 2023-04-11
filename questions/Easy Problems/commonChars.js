@@ -16,6 +16,7 @@ const commonChars = (words) => {
         localMap.set(letter, 1);
       }
     }
+    // getting the main key values
     for (const [key, _] of Object.entries(hash)) {
       if (localMap.has(key)) {
         hash[key].push(localMap.get(key));
