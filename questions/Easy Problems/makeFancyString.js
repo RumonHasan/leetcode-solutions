@@ -1,5 +1,4 @@
 const makeFancyString = (s) => {
-  console.log(s);
   let dummyS = s + ' '; // to get the last character index for the final count iteration
   s = dummyS;
   let count = 1;
@@ -26,4 +25,4 @@ const makeFancyString = (s) => {
 };
 
 // basically write a program to make sure no three consequtive chars are equal
-console.log(makeFancyString('bbaaabbaaaacccc'));
+// console.log(makeFancyString('bbaaabbaaaacccc'));
