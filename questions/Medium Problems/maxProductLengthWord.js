@@ -1,5 +1,4 @@
 const maxProduct = (words) => {
-  console.log(words);
   words.sort((a, b) => b.length - a.length);
   const checkCommonChars = (word, checkWord) => {
     for (let index = 0; index < word.length; index++) {
@@ -27,4 +26,4 @@ const maxProduct = (words) => {
   return maxLength;
 };
 
-console.log(maxProduct(['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef']));
+//console.log(maxProduct(['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef']));
