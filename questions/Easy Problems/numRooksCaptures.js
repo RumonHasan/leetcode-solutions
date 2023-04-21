@@ -1,5 +1,4 @@
 const numRookCaptures = (board) => {
-
   const checkSides = (array) => {
     let index = 0;
     let count = 0;
@@ -65,4 +64,3 @@ const numRookCaptures = (board) => {
 //     ['.', '.', '.', 'p', '.', '.', '.', '.'],
 //     ['.', '.', '.', '.', '.', '.', '.', '.'],
 //   ])
-);
