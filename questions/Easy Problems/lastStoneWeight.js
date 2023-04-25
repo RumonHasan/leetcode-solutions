@@ -22,4 +22,4 @@ const lastStongWeight = (stones) => {
   return stones[0] === undefined ? 0 : stones[0];
 };
 
-console.log(lastStongWeight([2, 2]));
+//console.log(lastStongWeight([2, 2]));
