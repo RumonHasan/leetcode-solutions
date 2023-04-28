@@ -19,4 +19,4 @@ const lCS = (text1, text2) => {
   return dpArray[0][0];
 };
 
-console.log(lCS('abcde', 'ace'));
+// console.log(lCS('abcde', 'ace'));
