@@ -13,4 +13,4 @@ const longestIncreasingSubsequence = (nums) => {
   return Math.max(...dpArray);
 };
 // check up to the initial index
-console.log(longestIncreasingSubsequence([2, 5, 3, 7, 101]));
+//console.log(longestIncreasingSubsequence([2, 5, 3, 7, 101]));
