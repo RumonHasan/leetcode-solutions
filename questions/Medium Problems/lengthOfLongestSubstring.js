@@ -22,4 +22,4 @@ const lengthOfLongestSubstring = (s) => {
   return maxLength;
 };
 
-console.log(lengthOfLongestSubstring('abcabcbb'));
+//console.log(lengthOfLongestSubstring('abcabcbb'));
