@@ -18,7 +18,6 @@ const mostCommonWord = (paragraph, banned) => {
     }
     newArray.push(result);
   }
-  console.log(newArray);
   // removing banned words
   let postBannedWords = newArray.filter((word) => !banned.includes(word));
   let hash = {};
