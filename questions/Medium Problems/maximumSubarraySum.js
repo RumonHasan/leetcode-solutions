@@ -44,3 +44,5 @@ const maximumSubarraySum = (nums, k) => {
 
 // have to reduce from the start index number if the numebr at teh end is in the map and has a value of over 1
 //console.log(maximumSubarraySum([9, 9, 9, 1, 2, 3], 3));
+
+// incomplete--- optimized code is not yet done
