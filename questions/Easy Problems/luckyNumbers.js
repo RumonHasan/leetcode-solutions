@@ -1,7 +1,6 @@
 const luckyNumbers = (matrix) => {
   let checkCollection = [];
   let map = new Map();
-
   // check rows
   for (let index = 0; index < matrix.length; index++) {
     let rowMin = Infinity;
@@ -11,7 +10,6 @@ const luckyNumbers = (matrix) => {
     }
     map.has(rowMin) ? map.set(rowMin, map.get(rowMin) + 1) : map.set(rowMin, 1);
   }
-
   // check columns
   for (let index = 0; index < matrix[0].length; index++) {
     let colMax = -Infinity;
@@ -21,7 +19,6 @@ const luckyNumbers = (matrix) => {
     }
     map.has(colMax) ? map.set(colMax, map.get(colMax) + 1) : map.set(colMax, 1);
   }
-
   for (let [key, value] of map) {
     if (value > 1) {
       checkCollection.push(Number(key));
