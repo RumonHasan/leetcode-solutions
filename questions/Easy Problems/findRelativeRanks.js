@@ -61,4 +61,4 @@ const findRelativeRanks = (score) => {
   console.log(optimizedApproach());
 };
 
-console.log(findRelativeRanks([10, 3, 8, 9, 4]));
+//console.log(findRelativeRanks([10, 3, 8, 9, 4]));
