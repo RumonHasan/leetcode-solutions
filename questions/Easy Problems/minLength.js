@@ -26,5 +26,32 @@ const minLength = (s) => {
 
     return sArray.length;
   };
+
+  // optimized
+  const stackApproached = (s) => {
+    let stack = [];
+    const checkSubstrings = ['AB', 'CD'];
+    for (let index = 0; index < s.length + 1; index++) {
+      if (
+        stack.length &&
+        checkSubstrings.includes(
+          stack[stack.length - 2] + stack[stack.length - 1]
+        )
+      ) {
+        z;
+        stack.pop();
+        stack.pop();
+      }
+      stack.push(s[index]);
+    }
+    let finalStack = [];
+    for (let index in stack) {
+      const letter = stack[index];
+      if (letter !== undefined) {
+        finalStack.push(letter);
+      }
+    }
+    return finalStack.length;
+  };
 };
-console.log(minLength('ABFCACDB'));
+// console.log(minLength('ABFCACDBZ'));
