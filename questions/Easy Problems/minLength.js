@@ -38,7 +38,6 @@ const minLength = (s) => {
           stack[stack.length - 2] + stack[stack.length - 1]
         )
       ) {
-        z;
         stack.pop();
         stack.pop();
       }
