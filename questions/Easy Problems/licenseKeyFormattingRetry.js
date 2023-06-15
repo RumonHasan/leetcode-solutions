@@ -1,4 +1,5 @@
 const licenseKeyFormattingRetry = (s, k) => {
+  // unoptimized js code for the approach but this can be done at a much optimized rate....
   let array = s.split('-').join('');
   let segments = [];
   let segmentCounter = 0;
