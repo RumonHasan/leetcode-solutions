@@ -25,6 +25,10 @@ const diagonalSortMatrix = (matrix) => {
         matrix[index][secondIndex] = localArrayElement;
         // shifting to remove the first element after appending to the array
         matrixMap.get(matrixId).shift();
+        // without using shift()
+        // let old = matrixMap.get(matrixId);
+        // old.reverse().pop();
+        // matrixMap.set(matrixId, old.reverse())
       }
     }
   }
