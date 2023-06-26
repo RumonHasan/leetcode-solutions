@@ -43,4 +43,4 @@ const divideStringBasedOnRules = (s, k, fill) => {
   };
 };
 
-console.log(divideStringBasedOnRules('abcdefghij', 3, 'x'));
+//console.log(divideStringBasedOnRules('abcdefghij', 3, 'x'));
