@@ -13,6 +13,29 @@ const pickGifts = (gifts, k) => {
     }
     return gifts.reduce((acc, currentEl) => currentEl + acc);
   };
+
+  const optimized = () => {
+    let checkCounter = 0;
+    while (checkCounter < k) {
+      if (checkCounter <= k) {
+        let maxVal = Math.max(...gifts);
+        let subIndex = gifts.indexOf(maxVal);
+        gifts[subIndex] = Math.floor(Math.sqrt(maxVal));
+      }
+      checkCounter++;
+    }
+    return gifts.reduce((acc, curr) => acc + curr);
+  };
+
+  // further optimized using forloop
+  const forLoopOptimization = () => {
+    for (let index = 0; index < k; index++) {
+      const maxVal = Math.max(...gifts);
+      const localIndex = gifts.indexOf(maxVal);
+      gifts[localIndex] = Math.floor(Math.sqrt(maxVal));
+    }
+    return gifts.reduce((ac, cur) => ac + cur);
+  };
 };
 // main logic is to keep looking for the max with every iteration
 // using the approach to control change the to the vals within the index itself
