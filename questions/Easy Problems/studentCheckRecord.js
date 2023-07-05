@@ -8,6 +8,7 @@ const studentCheckRecord = (s) => {
     s[index] === 'P' && presentCounter++;
     s[index] === 'A' && absentCounter++;
     if (s[index] === 'L') {
+      // one pass iteration
       while (s[index] === 'L' && index < s.length) {
         localLateCounter++;
         index++;
