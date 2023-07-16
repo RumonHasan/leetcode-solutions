@@ -33,4 +33,4 @@ const kItemsWithMaximumSum = (numOnes, numZeros, numNegOnes, k) => {
   return totalSum;
 };
 
-console.log(kItemsWithMaximumSum(3, 2, 0, 2));
+//console.log(kItemsWithMaximumSum(3, 2, 0, 2));
