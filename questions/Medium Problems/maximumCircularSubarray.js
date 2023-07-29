@@ -1,6 +1,4 @@
 const maxCircularSubarray = (nums) => {
-  console.log(nums);
-
   // egde case for all negative numbers
   const check = nums.every((num) => num < 0);
   if (check) {
@@ -34,6 +32,7 @@ const maxCircularSubarray = (nums) => {
     return finalGlobalMax;
   }
 };
-
+// base logic for approach is to either get the max subarray and check whether its bigger than
+// the circular array of dp or not after deductions
 // dynamic programming approach
-console.log(maxCircularSubarray([-5, -3, -2, -5]));
+//console.log(maxCircularSubarray([5, 2, -3, -2, -7, 5]));
