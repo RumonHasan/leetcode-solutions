@@ -40,4 +40,4 @@ const numOfPairs = (nums, target) => {
 // thinking process:
 // main approach for this question has to be brute force appraoch since there are reverse order index pairs
 // use brute force and js in built methods in order to check
-console.log(numOfPairs(['777', '7', '77', '77'], '7777'));
+//console.log(numOfPairs(['777', '7', '77', '77'], '7777'));
