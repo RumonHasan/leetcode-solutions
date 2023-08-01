@@ -31,7 +31,6 @@ const hasAllCodes = (s, k) => {
     }
     return set.size === Math.pow(2, k);
   };
-  console.log(setApproach());
 };
 
 // base approach:
