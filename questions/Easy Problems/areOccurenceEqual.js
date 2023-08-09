@@ -28,6 +28,7 @@ const areOccurenceEqual = (s) => {
     let hashVals = Object.values(hash);
     const check = hashVals.some((val) => val !== charValCheck);
     return check ? false : true;
+
     // object appraoch
     // for (const [key, val] of Object.entries(hash)) {
     //   if (val !== charValCheck) {
