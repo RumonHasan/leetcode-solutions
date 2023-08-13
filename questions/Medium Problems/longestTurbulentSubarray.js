@@ -63,6 +63,7 @@ const longestTurbulentSubarray = (arr) => {
     return maxLen + 1;
   };
 
+  // this is a working sliding window approach that is O(n) but it can be optimized further
   const slidingWindowApproach = () => {
     if (arr.length === 1) return 1;
     let maxLen = 0;
@@ -70,7 +71,7 @@ const longestTurbulentSubarray = (arr) => {
     let start = 0;
     let bigCounter = 0;
     let smallerCounter = 0;
-    // egde case
+    // egde case for all ascending and sorted array
     let checkArray = [];
     for (let index = 1; index < arr.length; index++) {
       if (arr[index - 1] > arr[index]) {
@@ -90,6 +91,7 @@ const longestTurbulentSubarray = (arr) => {
     ) {
       return 2;
     }
+    // rest of the iteration
     while (end < arr.length) {
       const current = arr[end];
       const prev = arr[end - 1];
@@ -123,7 +125,7 @@ const longestTurbulentSubarray = (arr) => {
     return maxLen;
   };
 
-  console.log(slidingWindowApproach());
+  // console.log(slidingWindowApproach());
 };
 
 console.log(longestTurbulentSubarray([0, 8, 45, 88, 48, 68, 28, 55, 17, 24]));
