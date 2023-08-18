@@ -28,11 +28,11 @@ const maxSumHourGlass = (grid) => {
 };
 
 // its a general three by three matrix meaning that we cannot exceed the total row length and have to keep space for three
-console.log(
-  maxSumHourGlass([
-    [6, 2, 1, 3],
-    [4, 2, 1, 5],
-    [9, 2, 8, 7],
-    [4, 1, 2, 9],
-  ])
-);
+// console.log(
+//   maxSumHourGlass([
+//     [6, 2, 1, 3],
+//     [4, 2, 1, 5],
+//     [9, 2, 8, 7],
+//     [4, 1, 2, 9],
+//   ])
+// );
