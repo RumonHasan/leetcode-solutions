@@ -23,7 +23,7 @@ const countPalindromicSubsequence = (s) => {
     return counter;
   };
 
-  console.log(intuitiveApproach());
+  //   console.log(intuitiveApproach());
 };
 
 // if the last position is available of the found letter then just add it to the set and get the other possible combinations
