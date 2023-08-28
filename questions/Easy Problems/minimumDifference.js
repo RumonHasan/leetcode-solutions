@@ -18,4 +18,4 @@ const minimumDifference = (nums, k) => {
   //console.log(slidingWindowSortedApproach());
 };
 
-console.log(minimumDifference([9, 4, 1, 7], 2));
+//console.log(minimumDifference([9, 4, 1, 7], 2));
