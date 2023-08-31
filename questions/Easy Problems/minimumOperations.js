@@ -23,8 +23,6 @@ const minimumOperations = (nums) => {
   const optimizedSolutionUsingSets = () => {
     return [...new Set(nums)].filter((num) => num !== 0).length;
   };
-
-  console.log(optimizedSolutionUsingSets());
 };
 
-console.log(minimumOperations([1, 5, 0, 3, 5]));
+//console.log(minimumOperations([1, 5, 0, 3, 5]));
