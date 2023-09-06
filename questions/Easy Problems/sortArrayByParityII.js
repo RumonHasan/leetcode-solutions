@@ -26,7 +26,8 @@ const sortArrayByParityII = (nums) => {
     }
     return dp;
   };
-  console.log(generalSolution());
+  // };
+  // console.log(generalSolution());
 };
 
 console.log(sortArrayByParityII([4, 2, 5, 7]));
