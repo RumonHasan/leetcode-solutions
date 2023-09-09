@@ -12,6 +12,17 @@ const missingNumber = (nums) => {
       }
     }
   };
+  const optimizedApproachUsingSets = () => {
+    let set = new Set();
+    for (let index in nums) {
+      set.add(nums[index]);
+    }
+    for (let index = 0; index <= nums.length; index++) {
+      if (!set.has(index)) return index;
+    }
+  };
+
+  //console.log(optimizedApproachUsingSets());
 };
 
-//onsole.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
+//console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
