@@ -18,8 +18,7 @@ const getDescentPeriods = (prices) => {
       if (prices[end - 1] - prices[end] !== 1) {
         start = end;
       }
-      const len = end - start + 1;
-      totalCount += len;
+      totalCount += end - start + 1;
       end++;
     }
     return totalCount;
