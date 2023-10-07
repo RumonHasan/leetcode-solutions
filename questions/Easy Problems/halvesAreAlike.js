@@ -28,4 +28,4 @@ const halvesAreAlike = (s) => {
   };
 };
 
-console.log(halvesAreAlike('book'));
+//console.log(halvesAreAlike('book'));
