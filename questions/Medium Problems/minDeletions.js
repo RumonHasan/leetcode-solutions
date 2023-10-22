@@ -21,7 +21,6 @@ const minDeletions = (s) => {
 
     return counter;
   };
-
   console.log(intuitiveApproach());
 };
 // decreaase till no occurence availabale
