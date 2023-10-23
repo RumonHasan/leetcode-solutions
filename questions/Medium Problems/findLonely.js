@@ -8,17 +8,19 @@ const findLonely = (nums) => {
         : map.set(number, 1);
     }
     let collection = [];
-    for (let index = 0; index < nums.length; index++) {
-      if (map.get(nums[index]) === 1) {
-        if (map.has(nums[index] + 1) || map.has(nums[index] - 1)) {
+    for (let [key, value] of map) {
+      if (value === 1) {
+        const added = Number(key) + 1;
+        const decreased = Number(key) - 1;
+        if (map.has(added) || map.has(decreased)) {
           continue;
         }
-        collection.push(nums[index]);
+        collection.push(Number(key));
       }
     }
     return collection;
   };
-  console.log(intuitiveApproach());
+  //console.log(intuitiveApproach());
 };
 
 //console.log(findLonely([62, 35, 59, 55, 84, 61, 38, 87, 55, 82]));
