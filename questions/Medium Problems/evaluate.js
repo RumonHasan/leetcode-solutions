@@ -24,7 +24,7 @@ const evaluteBrackets = (s, knowledge) => {
     return stack.join('');
   };
 
-  console.log(stackApproach());
+  //   console.log(stackApproach());
 };
 
 // separate the keys with the values then inject them
