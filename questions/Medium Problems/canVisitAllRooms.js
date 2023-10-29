@@ -16,6 +16,23 @@ const canVisitAllRooms = (rooms) => {
   };
 
   //console.log(stackBasedApproach());
+
+  const setApproach = () => {
+    let set = new Set();
+    let stack = [rooms[0]];
+    while (stack.length) {
+      let stackRoom = stack.pop();
+      for (let index = 0; index < stackRoom.length; index++) {
+        if (set.has(stackRoom[index])) continue; // otherwise rooms will be infinitely added to set
+        set.add(stackRoom[index]);
+        stack.push(rooms[stackRoom[index]]);
+      }
+    }
+    for (let index = 1; index < rooms.length; index++) {
+      if (!set.has(index)) return false;
+    }
+    return true;
+  };
 };
 
-console.log(canVisitAllRooms([[1], [2], [3], []]));
+//console.log(canVisitAllRooms([[1, 3], [3, 0, 1], [2], [0]]));
