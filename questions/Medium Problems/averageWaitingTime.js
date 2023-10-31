@@ -18,11 +18,11 @@ const averageWaitingTime = (customers) => {
   };
 };
 
-console.log(
-  averageWaitingTime([
-    [5, 2],
-    [5, 4],
-    [10, 3],
-    [20, 1],
-  ])
-);
+// console.log(
+//   averageWaitingTime([
+//     [5, 2],
+//     [5, 4],
+//     [10, 3],
+//     [20, 1],
+//   ])
+// );
