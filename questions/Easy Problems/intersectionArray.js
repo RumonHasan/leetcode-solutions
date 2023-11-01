@@ -3,7 +3,6 @@ const intersectionArray = (nums1, nums2) => {
     const transformer = (array) => {
       return new Set([...array]);
     };
-
     let arrayOne = transformer(nums1);
     let arrayTwo = [...transformer(nums2)];
     let array = [];
