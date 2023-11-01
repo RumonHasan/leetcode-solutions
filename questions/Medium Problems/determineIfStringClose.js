@@ -24,4 +24,4 @@ const closeStrings = (word1, word2) => {
   };
 };
 
-c; //onsole.log(closeStrings('cabbba', 'abbccc'));
+//onsole.log(closeStrings('cabbba', 'abbccc'));
