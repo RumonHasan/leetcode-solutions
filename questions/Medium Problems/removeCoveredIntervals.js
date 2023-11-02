@@ -1,5 +1,5 @@
 const removeCoveredIntervals = (intervals) => {
-  const bruteForce = () => {
+  const optimizedSorted = () => {
     // sorting is the main trick
     intervals.sort((a, b) => (a[0] === b[0] ? b[0] - a[1] : a[0] - b[0]));
     let stack = [intervals[0]];
