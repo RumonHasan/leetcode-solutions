@@ -21,3 +21,24 @@ const minimumSum = (nums) => {
 };
 
 //console.log(minimumSum([5, 4, 8, 7, 10, 2]));
+
+const maximumTripletValue = (nums) => {
+  let maximum = -Infinity;
+  for (let index = 0; index < nums.length; index++) {
+    const one = nums[index];
+    for (let subIndex = index + 1; subIndex < nums.length; subIndex++) {
+      const two = nums[subIndex];
+      for (
+        let thirdIndex = subIndex + 1;
+        thirdIndex < nums.length;
+        thirdIndex++
+      ) {
+        const three = nums[thirdIndex];
+        let maximumLocal = (one - two) * three;
+        maximum = Math.max(maximumLocal, maximum);
+      }
+    }
+  }
+  return maximum < 0 ? 0 : maximum;
+};
+//console.log(maximumTripletValue([12, 6, 1, 2, 7]));
