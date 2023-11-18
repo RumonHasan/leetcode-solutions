@@ -50,6 +50,48 @@ const wordSubsetsRetry = (words1, words2) => {
     }
     return result;
   };
+
+  // same approach but better syntax
+  const optimizedApproach = (words1, words2) => {
+    const generateFreq = (words) => {
+      let globalMap = new Map();
+      for (let word of words) {
+        let charMap = new Map();
+        for (let char of word) {
+          charMap.has(char)
+            ? charMap.set(char, charMap.get(char) + 1)
+            : charMap.set(char, 1);
+        }
+        for (let [key, value] of charMap) {
+          if (globalMap.has(key) && globalMap.get(key) > value) {
+            globalMap.set(key, value);
+          } else {
+            globalMap.set(key, value);
+          }
+        }
+      }
+      return globalMap;
+    };
+    let centralMap = generateFreq(words2);
+    // injection
+    let collection = [];
+    for (let word of words1) {
+      let map = new Map();
+      for (let wordChar of word) {
+        map.has(wordChar)
+          ? map.set(wordChar, map.get(wordChar) + 1)
+          : map.set(wordChar, 1);
+      }
+      let mapSize = 0;
+      for (let [key, value] of centralMap) {
+        map.has(key) && map.get(key) >= value && mapSize++;
+      }
+      mapSize === centralMap.size && collection.push(word);
+    }
+    return collection;
+  };
+
+  console.log(optimizedApproach(words1, words2));
 };
 // the char frequency should contain the max frequency of each alphabet in the words2
 // creating a frequency map in order to check whether the word in words1 is universal or not if not do not add to the list
