@@ -7,11 +7,10 @@ const asteroidCollisions = (asteroids) => {
         stack.push(asteroid);
         continue;
       }
-      if (stack[stack.length - 1] < 0 && asteroid < 0) {
-        stack.push(asteroid);
-        continue;
-      }
-      if (stack[stack.length - 1] > 0 && asteroid > 0) {
+      if (
+        (stack[stack.length - 1] < 0 && asteroid < 0) ||
+        (stack[stack.length - 1] > 0 && asteroid > 0)
+      ) {
         stack.push(asteroid);
         continue;
       }
