@@ -62,6 +62,7 @@ const wordSubsetsRetry = (words1, words2) => {
             ? charMap.set(char, charMap.get(char) + 1)
             : charMap.set(char, 1);
         }
+        // updating the global map with the max occurences and adding new chars if there is not any available
         for (let [key, value] of charMap) {
           if (globalMap.has(key) && globalMap.get(key) > value) {
             globalMap.set(key, value);
@@ -73,7 +74,7 @@ const wordSubsetsRetry = (words1, words2) => {
       return globalMap;
     };
     let centralMap = generateFreq(words2);
-    // injection
+    // injection after checking whether all the words letter has higher or same frequencies as the ones from the words2
     let collection = [];
     for (let word of words1) {
       let map = new Map();
@@ -84,7 +85,9 @@ const wordSubsetsRetry = (words1, words2) => {
       }
       let mapSize = 0;
       for (let [key, value] of centralMap) {
-        map.has(key) && map.get(key) >= value && mapSize++;
+        if (map.has(key) && map.get(key) >= value) {
+          mapSize++;
+        }
       }
       mapSize === centralMap.size && collection.push(word);
     }
