@@ -35,11 +35,10 @@ const asteroidCollisions = (asteroids) => {
           if (Math.abs(stackRoid) < Math.abs(asteroid)) {
             stack.pop();
             // sub conditions if the other elements in stack become same sign then just push and break
-            if (stack[stack.length - 1] < 0 && asteroid < 0) {
-              stack.push(asteroid);
-              break;
-            }
-            if (stack[stack.length - 1] > 0 && asteroid > 0) {
+            if (
+              (stack[stack.length - 1] < 0 && asteroid < 0) ||
+              (stack[stack.length - 1] > 0 && asteroid > 0)
+            ) {
               stack.push(asteroid);
               break;
             }
