@@ -74,11 +74,17 @@ const groupAnagrams = (strs) => {
     if (map.has(word)) {
       map.get(word).push(normalWord);
     } else {
-      map.set(word, [normalWord]);
+      map.set(word, [normalWord]); //
     }
     end++;
   }
   return [...map.values()];
 };
 
-console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+//console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+
+// starting the sequence from set and checking whether it has a left neighbor or not
+const longestConsequtiveSequence = (nums) => {
+  console.log(nums);
+};
+console.log(longestConsequtiveSequence([100, 4, 200, 1, 3, 2]));
