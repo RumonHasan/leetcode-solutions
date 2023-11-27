@@ -87,4 +87,4 @@ const groupAnagrams = (strs) => {
 const longestConsequtiveSequence = (nums) => {
   console.log(nums);
 };
-console.log(longestConsequtiveSequence([100, 4, 200, 1, 3, 2]));
+//console.log(longestConsequtiveSequence([100, 4, 200, 1, 3, 2]));
