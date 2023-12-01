@@ -39,3 +39,27 @@ const maxIncreaseKeepingSkyline = (grid) => {
 //     [0, 3, 1, 0],
 //   ])
 // );
+
+const numberOfPoints = (nums) => {
+  const intuitiveUncleanApproach = () => {
+    let set = new Set();
+    nums
+      .sort((a, b) => a[0] - b[0])
+      .map((array) => {
+        const start = array[0];
+        const end = array[1];
+        for (let index = start; index <= end; index++) {
+          set.add(index);
+        }
+      });
+    return set.size;
+  };
+};
+
+// console.log(
+//   numberOfPoints([
+//     [3, 6],
+//     [1, 5],
+//     [4, 7],
+//   ])
+// );
