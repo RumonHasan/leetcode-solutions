@@ -17,6 +17,7 @@ const partitionLabels = (s) => {
     for (let index = 1; index < intervals.length; index++) {
       const lowerBound = intervals[index][0];
       const upperBound = intervals[index][1];
+      //checking whether the intervals are merged or not
       if (lowerBound < maxBound) {
         maxBound = Math.max(maxBound, upperBound);
       } else {
