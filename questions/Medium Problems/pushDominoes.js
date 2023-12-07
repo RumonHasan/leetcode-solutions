@@ -116,4 +116,41 @@ const pushDominoes = (dominoes) => {
 
 //"RRRR.LLLL.RRRRRRRRRR"
 
-console.log(pushDominoes('R...R...L.R........L'));
+// console.log(pushDominoes('R...R...L.R........L'));
+
+const shortestDistanceToChar = (s, c) => {
+  let charDp = new Array(s.length).fill('');
+  let dp = new Array(s.length).fill(0);
+  let dpLeft = new Array(s.length).fill(0);
+  const commonLen = dp.length;
+  // from left to right;
+  let charForce = 0;
+  let maxForce = s.length;
+
+  for (let index = 0; index < commonLen; index++) {
+    const char = s[index];
+    if (char === c) {
+      charForce = commonLen;
+    } else if (char !== c) {
+      charForce = Math.max(charForce - 1, 0);
+    }
+    dp[index] += charForce;
+  }
+  charForce = 0;
+  for (let index = commonLen - 1; index >= 0; index--) {
+    const char = s[index];
+    if (char === c) {
+      charForce = commonLen;
+    } else if (char !== c) {
+      charForce = Math.max(charForce - 1, 0);
+    }
+    dpLeft[index] += charForce;
+  }
+  // final check
+  for (let index = 0; index < charDp.length; index++) {
+    charDp[index] = Math.min(maxForce - dp[index], maxForce - dpLeft[index]);
+  }
+  return charDp;
+};
+
+//console.log(shortestDistanceToChar('loveleetcode', 'e'));
