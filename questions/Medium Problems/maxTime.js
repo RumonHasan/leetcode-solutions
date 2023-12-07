@@ -80,4 +80,51 @@ const maxTime = (time) => {
   };
 };
 
-console.log(maxTime('2?:50'));
+// console.log(maxTime('2?:50'));
+
+const wordPattern = (pattern, s) => {
+  const optimizedApproach = () => {
+    let map = new Map();
+    let sArray = s.split(' ');
+    let checkeSet = new Set();
+    if (sArray.length !== pattern.length) return false;
+    sArray.map((word) => checkeSet.add(word));
+    for (let index = 0; index < pattern.length; index++) {
+      if (!map.has(pattern[index])) {
+        map.set(pattern[index], sArray[index]);
+      }
+    }
+    if (map.size !== checkeSet.size) return false; // edge case
+    for (let index = 0; index < pattern.length; index++) {
+      const expectedValue = map.get(pattern[index]);
+      if (sArray[index] !== expectedValue) return false;
+    }
+    return true;
+  };
+
+  const gptOptimized = () => {
+    const sArray = s.split(' ');
+
+    if (pattern.length !== sArray.length) return false;
+
+    const map = new Map();
+    const checkeSet = new Set();
+
+    for (let index = 0; index < pattern.length; index++) {
+      const char = pattern[index];
+      const word = sArray[index];
+
+      if (!map.has(char)) {
+        if (checkeSet.has(word)) return false; // Avoid mapping one pattern character to multiple words
+        map.set(char, word);
+        checkeSet.add(word);
+      } else if (map.get(char) !== word) {
+        return false; // Pattern character already mapped to a different word
+      }
+    }
+
+    return true;
+  };
+};
+
+console.log(wordPattern('abba', 'dog cat cat dog'));
