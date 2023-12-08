@@ -11,6 +11,7 @@ const findPrefixScore = (nums) => {
         dp[end] = number * 2;
       }
       if (end > 0) {
+        // adds the maxVal with the number then adds to the prefix sum
         const val = number + maxVal;
         dp[end] = dp[end - 1] + val;
       }
