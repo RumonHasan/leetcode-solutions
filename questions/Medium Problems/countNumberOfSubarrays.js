@@ -8,7 +8,7 @@ const numberOfSubarrays = (nums, k) => {
   const checkOddEven = (num) => num % 2 === 1;
   while (end < nums.length) {
     if (checkOddEven(nums[end])) {
-      count = 0;
+      count = 0; // need to be reinitialized in order to get the new subarrays with k localodd count
       localOddCount++;
     }
     // only enters when local count === k and then it starts increasing count
