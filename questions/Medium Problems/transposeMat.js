@@ -1,5 +1,4 @@
 const transposeMat = (matrix) => {
-  console.log(matrix);
   // straight forward approach using flat method
   const flatApproach = () => {
     let dp = [];
