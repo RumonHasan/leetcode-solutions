@@ -1,21 +1,27 @@
-const peopleIndexes = (favoriteCompanies) => {
-  console.log(favoriteCompanies);
-  // using map to record indexes
-  let coMap = new Map();
-  for (let index = 0; index < favoriteCompanies.length; index++) {
-    let favRow = favoriteCompanies[index];
-    const mainIndex = index;
-    for (let subIndex = 0; subIndex < favRow.length; subIndex++) {
-      const company = favRow[subIndex];
-      if (coMap.has(company)) {
-        coMap.get(company).push(mainIndex);
-        break;
-      } else {
-        coMap.set(company, [mainIndex]);
+var peopleIndexes = function (favoriteCompanies) {
+  const intuitiveButSlowApproach = () => {
+    const isSubsetCheck = (setOne, setTwo) => {
+      let set = new Set(setTwo);
+      return setOne.every((company) => set.has(company));
+    };
+    let indexes = [];
+    for (let index = 0; index < favoriteCompanies.length; index++) {
+      let companySetOne = favoriteCompanies[index];
+      let counter = 0;
+      for (let subIndex = 0; subIndex < favoriteCompanies.length; subIndex++) {
+        let companySetTwo = favoriteCompanies[subIndex];
+        if (subIndex !== index) {
+          if (!isSubsetCheck(companySetOne, companySetTwo)) {
+            counter++;
+          }
+        }
+      }
+      if (counter === favoriteCompanies.length - 1) {
+        indexes.push(index);
       }
     }
-  }
-  console.log(coMap);
+    return indexes;
+  };
 };
 
 console.log(
