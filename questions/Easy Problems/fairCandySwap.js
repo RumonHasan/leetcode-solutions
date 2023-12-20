@@ -107,3 +107,20 @@ const destCity = (paths) => {
 //     ['Lima', 'Sao Paulo'],
 //   ])
 // );
+
+const average = (salary) => {
+  const uglyWay = () => {
+    salary = salary.sort((a, b) => a - b);
+    let counter = 0;
+    let total = 0;
+    let newArraySet = new Array(...new Set([...salary]));
+    for (let index = 1; index < newArraySet.length - 1; index++) {
+      let sal = newArraySet[index];
+      total += sal;
+      counter++;
+    }
+    return total / counter;
+  };
+};
+
+//console.log(average([4000, 3000, 1000, 2000]));
