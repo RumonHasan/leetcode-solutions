@@ -43,6 +43,7 @@ const countPalindromicSubstrings = (s) => {
   for (let i = 0; i < s.length; i++) {
     const currChar = s[i];
     if (currChar) count++;
+    // for odd traversal
     let left = i - 1 ? i - 1 : 0;
     let right = i + 1 ? i + 1 : s.length - 1;
     while (left >= 0 && right < s.length && s[left] == s[right]) {
@@ -124,3 +125,25 @@ const average = (salary) => {
 };
 
 //console.log(average([4000, 3000, 1000, 2000]));
+
+const mergeAlternatively = (word1, word2) => {
+  const basicIntuitiveApproach = () => {
+    let result = '';
+    let j = 0;
+    let i = 0;
+    while (i < word1.length && j < word2.length) {
+      result += word1[i];
+      result += word2[j];
+      i++;
+      j++;
+    }
+    if (word1.length === word2.length) return result;
+    if (i === word1.length) {
+      return (result += word2.slice(i, word2.length));
+    } else {
+      return result + word1.slice(j, word1.length);
+    }
+  };
+};
+
+//console.log(mergeAlternatively('ab', 'pqrs'));
