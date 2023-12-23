@@ -71,3 +71,22 @@ const maxOperations = (nums, k) => {
 };
 
 //console.log(maxOperations([3, 5, 1, 5], 2));
+
+// using formula or it can be done with incremental updates
+const zeroFillerSubarrays = (nums) => {
+  let counter = 0;
+  for (let index = 0; index < nums.length; index++) {
+    if (nums[index] === 0) {
+      let localCounter = 0;
+      while (index < nums.length && nums[index] === 0) {
+        localCounter++;
+        index++;
+      }
+      let localLength = (localCounter * (localCounter + 1)) / 2;
+      counter += localLength;
+    }
+  }
+  return counter;
+};
+
+//console.log(zeroFillerSubarrays([1, 3, 0, 0, 2, 0, 0, 4]));
