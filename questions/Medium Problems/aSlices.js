@@ -24,4 +24,4 @@ const arithmeticSlices = (nums) => {
   };
 };
 
-console.log(arithmeticSlices([1, 2, 3, 4, 7, 8, 9]));
+//console.log(arithmeticSlices([1, 2, 3, 4, 7, 8, 9]));
