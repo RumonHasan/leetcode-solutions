@@ -55,3 +55,25 @@ const closeStrings = (word1, word2) => {
 };
 
 //console.log(closeStrings('cabbba', 'abbccc'));
+// brute force approach
+const oddLenSubarrays = (arr) => {
+  const simpleBruteForce = () => {
+    let total = 0;
+    let end = 0;
+    while (end < arr.length) {
+      let subTotal = 0;
+      let subLen = 0;
+      for (let i = end; i < arr.length; i++) {
+        subLen++;
+        subTotal += arr[i];
+        if (subLen % 2 === 1) {
+          total += subTotal;
+        }
+      }
+      end++;
+    }
+    return total;
+  };
+};
+
+//console.log(oddLenSubarrays([1, 4, 2, 5, 3]));
