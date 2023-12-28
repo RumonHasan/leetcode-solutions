@@ -51,7 +51,6 @@ const closeStrings = (word1, word2) => {
 
     return freqHash(word1) === freqHash(word2);
   };
-  //console.log(hashApproach());
 };
 
 //console.log(closeStrings('cabbba', 'abbccc'));
@@ -77,3 +76,26 @@ const oddLenSubarrays = (arr) => {
 };
 
 //console.log(oddLenSubarrays([1, 4, 2, 5, 3]));
+
+const uniqueOccurence = (arr) => {
+  const badApproach = () => {
+    let map = new Map();
+    for (let index = 0; index < arr.length; index++) {
+      const number = arr[index];
+      map.set(number, (map.get(number) || 0) + 1);
+    }
+    let values = [...map.values()];
+    let hash = {};
+    for (let number of values) {
+      hash[number] = (hash[number] || 0) + 1;
+    }
+    for (let [key, value] of Object.entries(hash)) {
+      if (value > 1) {
+        return false;
+      }
+    }
+    return true;
+  };
+};
+
+console.log(uniqueOccurence([1, 2, 2, 1, 1, 3]));
