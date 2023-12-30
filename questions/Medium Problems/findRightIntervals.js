@@ -21,22 +21,63 @@ const makeEqual = (words) => {
   };
 };
 
-console.log(
-  makeEqual([
-    'caaaaa',
-    'aaaaaaaaa',
-    'a',
-    'bbb',
-    'bbbbbbbbb',
-    'bbb',
-    'cc',
-    'cccccccccccc',
-    'ccccccc',
-    'ccccccc',
-    'cc',
-    'cccc',
-    'c',
-    'cccccccc',
-    'c',
-  ])
-);
+// console.log(
+//   makeEqual([
+//     'caaaaa',
+//     'aaaaaaaaa',
+//     'a',
+//     'bbb',
+//     'bbbbbbbbb',
+//     'bbb',
+//     'cc',
+//     'cccccccccccc',
+//     'ccccccc',
+//     'ccccccc',
+//     'cc',
+//     'cccc',
+//     'c',
+//     'cccccccc',
+//     'c',
+//   ])
+// );
+
+const findMaxOnes = (nums) => {
+  let maxCount = 0;
+  let end = 0;
+  while (end < nums.length) {
+    const currNum = nums[end];
+    if (currNum === 1) {
+      let start = 0;
+      while (end < nums.length && nums[end] === 1) {
+        start++;
+        end++;
+      }
+      maxCount = Math.max(maxCount, start);
+    }
+    end++;
+  }
+  return maxCount;
+};
+
+//console.log(findMaxOnes([1, 1, 0, 1, 1, 1]));
+
+const longestOnes = (nums, k) => {
+  let start = 0;
+  let end = 0;
+  let maxLength = 0;
+  let extraCount = 0;
+  while (end < nums.length) {
+    if (nums[end] === 0) extraCount++;
+    while (extraCount > k) {
+      if (nums[start] === 0) {
+        extraCount--;
+      }
+      start++;
+    }
+    maxLength = Math.max(end - start + 1, maxLength);
+    end++;
+  }
+  return maxLength;
+};
+
+//console.log(longestOnes([1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2));
