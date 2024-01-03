@@ -21,6 +21,28 @@ const mostCompetitive = (nums, k) => {
 
     return stack;
   };
+  // checks the remaining cancellations before hand before reducing from the stack
+  const intuitiveStackApproach = () => {
+    let stack = [nums[0]];
+    let remaininCancel = nums.length - k;
+    let end = 1;
+    while (end < nums.length) {
+      while (stack[stack.length - 1] > nums[end] && remaininCancel) {
+        stack.pop();
+        remaininCancel--;
+      }
+      stack.push(nums[end]);
+      end++;
+    }
+    if (remaininCancel > 0) {
+      for (let i = 0; i < remaininCancel; i++) {
+        stack.pop();
+      }
+    }
+    return stack;
+  };
+
+  //console.log(intuitiveStackApproach());
 };
 
 console.log(mostCompetitive([2, 4, 3, 3, 5, 4, 9, 6], 4));
