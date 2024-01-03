@@ -45,4 +45,24 @@ const mostCompetitive = (nums, k) => {
   //console.log(intuitiveStackApproach());
 };
 
-console.log(mostCompetitive([2, 4, 3, 3, 5, 4, 9, 6], 4));
+// console.log(mostCompetitive([2, 4, 3, 3, 5, 4, 9, 6], 4));
+
+const removeStarsFromStrings = (s) => {
+  const easyIntuitiveApproach = () => {
+    let stack = [s[0]];
+    let end = 1;
+    const star = '*';
+    while (end < s.length) {
+      const char = s[end];
+      if (char === star) {
+        stack.pop();
+      } else {
+        stack.push(char);
+      }
+      end++;
+    }
+    return stack.join('');
+  };
+};
+
+//console.log(removeStarsFromStrings('leet**cod*e'));
