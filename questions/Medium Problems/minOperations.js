@@ -55,3 +55,35 @@ const rowAndMaxOnes = (mat) => {
 //     [0, 0],
 //   ])
 // );
+
+const replaceWords = (dictionary, sentence) => {
+  const intuitiveApproach = () => {
+    dictionary.sort((a, b) => a.length - b.length);
+    let arraySentence = sentence.split(' ');
+    let collection = [];
+    for (let i = 0; i < arraySentence.length; i++) {
+      const currWord = arraySentence[i];
+      let check = false;
+      for (let j = 0; j < dictionary.length; j++) {
+        const currDictWord = dictionary[j];
+        if (currWord.startsWith(currDictWord)) {
+          collection.push(currDictWord);
+          check = true;
+          break;
+        }
+      }
+      if (!check) {
+        collection.push(currWord);
+      }
+    }
+    let result = '';
+    for (let index in collection) {
+      result += collection[index] + ' ';
+    }
+    return result.slice(0, -1);
+  };
+};
+
+// console.log(
+//   replaceWords(['cat', 'bat', 'rat'], 'the cattle was rattled by the battery')
+// );
