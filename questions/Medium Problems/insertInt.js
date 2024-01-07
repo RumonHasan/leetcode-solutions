@@ -21,9 +21,7 @@ const insert = (intervals, newInterval) => {
       }
     } // egde case
     if (first === 0 && second === 0) {
-      let newFinal = intervals.map((interval) => interval);
-      newFinal.push(newInterval);
-      return newFinal.sort((a, b) => a[0] - b[0]);
+      return [...intervals, newInterval].sort((a, b) => a[0] - b[0]);
     } else {
       finalIntervals.push([first, second]);
     }
