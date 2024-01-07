@@ -21,6 +21,7 @@ const mostCompetitive = (nums, k) => {
 
     return stack;
   };
+  
   // checks the remaining cancellations before hand before reducing from the stack
   const intuitiveStackApproach = () => {
     let stack = [nums[0]];
