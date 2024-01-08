@@ -12,6 +12,7 @@ const deleteAndEarn = (nums) => {
         array: array,
       };
     };
+    // destructured new array and map containing the duplicate occurences
     const { array, map } = getMapAndArray(nums);
     let dp = new Array(array.length).fill(0);
     let end = 0;
@@ -45,3 +46,54 @@ const deleteAndEarn = (nums) => {
 };
 //[2,3,4]
 //console.log(deleteAndEarn([2, 2, 3, 3, 3, 4]));
+
+const unequalTriplets = (nums) => {
+  const basicBruteForce = () => {
+    let counter = 0;
+    for (let i = 0; i < nums.length; i++) {
+      let first = nums[i];
+      for (let j = i + 1; j < nums.length; j++) {
+        let second = nums[j];
+        for (let k = j + 1; k < nums.length; k++) {
+          let third = nums[k];
+          if (first !== second && second !== third && third !== first) {
+            counter++;
+          }
+        }
+      }
+    }
+    return counter;
+  };
+};
+
+// console.log(unequalTriplets([4, 4, 2, 4, 3]));
+
+const divideString = (s, k, fill) => {
+  let counter = 0;
+  let end = 0;
+  let string = '';
+  let collection = [];
+  while (end < s.length) {
+    if (counter === k) {
+      collection.push(string);
+      string = '';
+      counter = 0;
+    }
+    const currChar = s[end];
+    string += currChar;
+    counter++;
+    if (end === s.length - 1) {
+      collection.push(string);
+    }
+    end++;
+  }
+  if (collection[collection.length - 1].length < k) {
+    const missingChar = k - collection[collection.length - 1].length;
+    let endString = (collection[collection.length - 1] +=
+      fill.repeat(missingChar));
+    collection.splice(collection.length - 1, 1, endString);
+  }
+  return collection;
+};
+
+//console.log(divideString('abcdefghij', 3, 'x'));
