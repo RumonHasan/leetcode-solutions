@@ -1,7 +1,6 @@
 "use strict";
 
 var asteroidCollision = function asteroidCollision(asteroids) {
-  console.log(asteroids);
   var stack = [];
   var end = 0;
 

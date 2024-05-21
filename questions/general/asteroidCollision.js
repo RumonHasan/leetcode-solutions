@@ -1,5 +1,4 @@
 const asteroidCollision = (asteroids) => {
-  console.log(asteroids);
   let stack = [];
   let end = 0;
   while (end < asteroids.length) {
