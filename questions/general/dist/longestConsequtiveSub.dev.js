@@ -55,6 +55,109 @@ var longestConsequtiveSub = function longestConsequtiveSub(nums) {
 
     return maxCount;
   };
-};
+}; // max consequtive floor question
 
-console.log(longestConsequtiveSub([100, 4, 200, 1, 3, 2]));
+
+var maxConsequtiveFloors = function maxConsequtiveFloors(bottom, top, special) {
+  var TLE = function TLE() {
+    var maxConsequtive = 0;
+    var floors = [];
+    var specialSet = new Set(_toConsumableArray(special));
+
+    for (var i = bottom; i <= top; i++) {
+      if (!specialSet.has(i)) {
+        floors.push(i);
+      }
+    }
+
+    var range = [];
+    var start = floors[0];
+    var end = floors[0];
+
+    for (var _i = 1; _i < floors.length; _i++) {
+      var currFloor = floors[_i];
+      var prevFloor = floors[_i - 1];
+
+      if (prevFloor !== currFloor - 1) {
+        end = prevFloor;
+        range.push([start, end]);
+        start = currFloor;
+        end = currFloor;
+      } else {
+        end = currFloor;
+      }
+
+      if (_i === floors.length - 1) {
+        range.push([start, end]);
+      }
+    }
+
+    if (floors.length === 0) return 0;
+    console.log(range);
+
+    for (var _i2 = 0; _i2 < range.length; _i2++) {
+      maxConsequtive = Math.max(Math.abs(range[_i2][0] - range[_i2][1]) + 1, maxConsequtive);
+    }
+
+    return maxConsequtive;
+  }; // optimized but TLE
+
+
+  var sorted = function sorted() {
+    special.sort(function (a, b) {
+      return a - b;
+    });
+    var maxFloorCount = 0;
+    var localFloorCount = 0;
+    var sIndex = 0;
+
+    for (var floor = bottom; floor <= top; floor++) {
+      var currFloor = floor;
+
+      if (currFloor === special[sIndex]) {
+        localFloorCount = 0;
+        sIndex++;
+      } else {
+        localFloorCount++;
+      }
+
+      maxFloorCount = Math.max(maxFloorCount, localFloorCount);
+    }
+
+    return maxFloorCount;
+  }; // using set to check the gap of the specials instead of checking teh entire range
+
+
+  var setApproach = function setApproach() {
+    special.sort(function (a, b) {
+      return a - b;
+    });
+    var maxGapCount = 0;
+
+    for (var i = 0; i < special.length; i++) {
+      var currSpecialFloor = special[i];
+      var prevSpecialFloor = special[i - 1];
+
+      if (i === 0) {
+        maxGapCount = Math.max(maxGapCount, currSpecialFloor - bottom);
+      } else if (i === special.length - 1) {
+        var localMax = Math.max(top - currSpecialFloor, currSpecialFloor - prevSpecialFloor);
+        maxGapCount = Math.max(maxGapCount, localMax);
+      } else {
+        maxGapCount = Math.max(maxGapCount, currSpecialFloor - prevSpecialFloor - 1);
+      }
+    }
+
+    return maxGapCount;
+  }; //console.log(setApproach());
+
+}; // 2 3 4 5 6 7 8 9
+
+
+console.log(maxConsequtiveFloors(28, 50, [35, 48]));
+
+var revIII = function revIII(s) {
+  return s.split('').map(function (_, i) {
+    return s.charAt(s.length - 1 - i);
+  }).join('').split(' ').reverse().join(' ');
+}; // console.log(revIII("Let's take LeetCode contest"));
