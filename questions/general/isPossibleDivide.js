@@ -32,4 +32,20 @@ const isPossibleDivide = (nums, k) => {
   return stackLen === nums.length;
 };
 
+// diividing into equl pairs
+const divideIntoEqualPairs = (nums) => {
+  let hash = {};
+  for (let num of nums) {
+    hash[num] ? hash[num]++ : (hash[num] = 1);
+  }
+  for (let [_, value] of Object.entries(hash)) {
+    if (value % 2 === 1) {
+      return false;
+    }
+  }
+  return true;
+};
+
+//console.log(divideIntoEqualPairs([3, 2, 3, 2, 2, 2]));
+
 //console.log(isPossibleDivide([3, 3, 2, 2, 1, 1], 3));
