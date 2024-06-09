@@ -4,7 +4,7 @@ var getSubarrayBeauty = function getSubarrayBeauty(nums, k, x) {
   var stack = [];
   var end = k;
   var start = 0;
-  var map = new Map(); // neg check based on the given constraints
+  var map = new Map();
 
   var negCheck = function negCheck(localMap, x) {
     var negCheck = false;
@@ -25,24 +25,13 @@ var getSubarrayBeauty = function getSubarrayBeauty(nums, k, x) {
     }
 
     return 0 && !negCheck;
-  }; // initial check
-
+  };
 
   for (var i = 0; i < end; i++) {
-    var num = nums[i];
-
-    if (num < 0) {
-      if (map.has(num)) {
-        map.set(num, map.get(num) + 1);
-      } else {
-        map.set(num, 1);
-      }
-    }
+    nums[i] < 0 && map.set(nums[i], (map.get(nums[i]) || 0) + 1);
   }
 
-  console.log(map);
-  var negFirst = negCheck(map, x);
-  stack.push(negFirst); // controlled map with the remaining array
+  stack.push(negCheck(map, x));
 
   while (end < nums.length) {
     var startNum = nums[start];
@@ -50,22 +39,17 @@ var getSubarrayBeauty = function getSubarrayBeauty(nums, k, x) {
 
     if (map.has(startNum)) {
       map.set(startNum, map.get(startNum) - 1);
-
-      if (map.get(startNum) === 0) {
-        map["delete"](startNum);
-      }
+      map.get(startNum) === 0 && map["delete"](startNum);
     }
 
-    start++; // adding possible new num
+    start++;
 
     if (map.has(curr)) {
       map.set(curr, map.get(curr) + 1);
-    } else if (curr < 0) {
-      map.set(curr, 1);
     }
 
-    var negX = negCheck(map, x);
-    stack.push(negX);
+    map.set(curr, 1) && curr < 0;
+    stack.push(negCheck(map, x));
     end++;
   }
 
