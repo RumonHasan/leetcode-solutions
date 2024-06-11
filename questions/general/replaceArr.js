@@ -37,5 +37,29 @@ const replaceArray = (arr) => {
   //console.log(optimizedApproach([17, 18, 5, 4, 6, 1]));
 };
 
+const findKAverage = (nums, k) => {
+  let maxAvg = 0;
+  let total = 0;
+  for (let i = 0; i < k; i++) {
+    total += nums[i];
+  }
+  let currAvg = total / k;
+  maxAvg = currAvg;
+  let start = 0;
+  for (let i = k; i < nums.length; i++) {
+    let currNum = nums[i];
+    total -= nums[start];
+    total += currNum;
+    currAvg = total / k;
+    if (currAvg > maxAvg) {
+      maxAvg = currAvg;
+    }
+    start++;
+  }
+  return maxAvg;
+};
+
+//console.log(findKAverage([1, 12, -5, -6, 50, 3], 4));
+
 // have to keep track of the upcoming next max element in order to populate the array
 //console.log(replaceArray([17, 18, 5, 4, 6, 1]));

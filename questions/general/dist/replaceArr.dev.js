@@ -46,5 +46,34 @@ var replaceArray = function replaceArray(arr) {
     return dp;
   }; //console.log(optimizedApproach([17, 18, 5, 4, 6, 1]));
 
-}; // have to keep track of the upcoming next max element in order to populate the array
+};
+
+var findKAverage = function findKAverage(nums, k) {
+  var maxAvg = 0;
+  var total = 0;
+
+  for (var i = 0; i < k; i++) {
+    total += nums[i];
+  }
+
+  var currAvg = total / k;
+  maxAvg = currAvg;
+  var start = 0;
+
+  for (var _i = k; _i < nums.length; _i++) {
+    var currNum = nums[_i];
+    total -= nums[start];
+    total += currNum;
+    currAvg = total / k;
+
+    if (currAvg > maxAvg) {
+      maxAvg = currAvg;
+    }
+
+    start++;
+  }
+
+  return maxAvg;
+}; //console.log(findKAverage([1, 12, -5, -6, 50, 3], 4));
+// have to keep track of the upcoming next max element in order to populate the array
 //console.log(replaceArray([17, 18, 5, 4, 6, 1]));
