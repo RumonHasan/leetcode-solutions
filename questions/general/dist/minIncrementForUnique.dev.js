@@ -1,6 +1,7 @@
 "use strict";
 
 var minIncrementForUnique = function minIncrementForUnique(nums) {
+  // efficient solution
   var sortingSolution = function sortingSolution() {
     nums.sort(function (a, b) {
       return a - b;
@@ -11,12 +12,7 @@ var minIncrementForUnique = function minIncrementForUnique(nums) {
       var current = nums[i];
       var prev = nums[i - 1];
 
-      if (current === prev && i === 1) {
-        nums[i] += 1;
-        counter++;
-      }
-
-      if (current === prev && i > 1) {
+      if (current === prev) {
         nums[i] += 1;
         counter++;
       } else if (current < prev) {
@@ -27,7 +23,8 @@ var minIncrementForUnique = function minIncrementForUnique(nums) {
     }
 
     return counter;
-  };
+  }; //const countingSortWay = () => {};
+
 };
 
 console.log(minIncrementForUnique([3, 2, 1, 2, 1, 7])); // 1 1 2 2 3 7

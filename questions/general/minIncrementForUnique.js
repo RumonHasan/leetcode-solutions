@@ -1,15 +1,12 @@
 const minIncrementForUnique = (nums) => {
+  // efficient solution
   const sortingSolution = () => {
     nums.sort((a, b) => a - b);
     let counter = 0;
     for (let i = 1; i < nums.length; i++) {
       let current = nums[i];
       let prev = nums[i - 1];
-      if (current === prev && i === 1) {
-        nums[i] += 1;
-        counter++;
-      }
-      if (current === prev && i > 1) {
+      if (current === prev) {
         nums[i] += 1;
         counter++;
       } else if (current < prev) {
@@ -20,6 +17,8 @@ const minIncrementForUnique = (nums) => {
     }
     return counter;
   };
+
+  //const countingSortWay = () => {};
 };
 
 console.log(minIncrementForUnique([3, 2, 1, 2, 1, 7]));
