@@ -47,3 +47,21 @@ var grumpyBookStoreOwner = function grumpyBookStoreOwner(customers, grumpy, minu
     [1, 0, 1, 2, 1, 1, 7, 5], 
     [0, 1, 0, 1, 0, 1, 0, 1]
 */
+
+
+var minDifference = function minDifference(nums, k) {
+  nums.sort(function (a, b) {
+    return b - a;
+  });
+  var minDiff = Infinity;
+  var total = nums[0] - nums[k - 1];
+  minDiff = total;
+  var start = 0;
+
+  for (var i = k; i < nums.length; i++) {
+    start++;
+    minDiff = Math.min(minDiff, nums[start] - nums[i]);
+  }
+
+  return minDiff;
+}; //console.log(minDifference([9, 4, 1, 7], 2));

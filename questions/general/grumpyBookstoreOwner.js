@@ -39,3 +39,18 @@ const grumpyBookStoreOwner = (customers, grumpy, minutes) => {
     [1, 0, 1, 2, 1, 1, 7, 5], 
     [0, 1, 0, 1, 0, 1, 0, 1]
 */
+
+const minDifference = (nums, k) => {
+  nums.sort((a, b) => b - a);
+  let minDiff = Infinity;
+  let total = nums[0] - nums[k - 1];
+  minDiff = total;
+  let start = 0;
+  for (let i = k; i < nums.length; i++) {
+    start++;
+    minDiff = Math.min(minDiff, nums[start] - nums[i]);
+  }
+  return minDiff;
+};
+
+//console.log(minDifference([9, 4, 1, 7], 2));
