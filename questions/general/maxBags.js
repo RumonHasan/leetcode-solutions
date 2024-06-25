@@ -26,3 +26,17 @@ const maxBags = (capacity, rocks, additionalRocks) => {
 };
 
 //console.log(maxBags([2, 3, 7, 4, 5], [1, 2, 2, 4, 4], 2));
+
+const minOperations = (nums)=>{
+  let counter = 0;
+  for (let i = 1; i < nums.length; i++){
+    if (nums[i - 1] >= nums[i]){
+      const addition = nums[i - 1] - nums[i] + 1;
+      counter += addition;
+      nums[i] += addition;
+    }
+  }
+  return counter;
+}
+
+//console.log(minOperations([1,5,2,4,1]))

@@ -39,3 +39,18 @@ var maxBags = function maxBags(capacity, rocks, additionalRocks) {
 
   return counter;
 }; //console.log(maxBags([2, 3, 7, 4, 5], [1, 2, 2, 4, 4], 2));
+
+
+var minOperations = function minOperations(nums) {
+  var counter = 0;
+
+  for (var i = 1; i < nums.length; i++) {
+    if (nums[i - 1] >= nums[i]) {
+      var addition = nums[i - 1] - nums[i] + 1;
+      counter += addition;
+      nums[i] += addition;
+    }
+  }
+
+  return counter;
+}; //console.log(minOperations([1,5,2,4,1]))
