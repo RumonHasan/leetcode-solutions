@@ -49,3 +49,50 @@ var isNStraightHands = function isNStraightHands(hand, groupSize) {
 
   return true;
 }; //console.log(isNStraightHands([1,1,2,2,3,3], 3));
+
+
+var counterDeletions = function counterDeletions(nums, val) {
+  var counter = [];
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = nums[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var num = _step2.value;
+
+      if (num !== val) {
+        counter.push(num);
+      }
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+        _iterator2["return"]();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  var counterIndex = 0;
+
+  for (var index in nums) {
+    nums[index] = counter[counterIndex];
+    counterIndex++;
+    if (counterIndex === counter.length) break;
+  }
+
+  var len = nums.length - counter.length;
+
+  for (var i = 0; i < len; i++) {
+    nums.pop();
+  }
+
+  return nums.length;
+}; //console.log(counterDeletions([0, 1, 2, 2, 3, 0, 4, 2], 2));
