@@ -25,3 +25,31 @@ var maxConsequtiveAnswers = function maxConsequtiveAnswers(answerKey, k) {
 
   return maxLen;
 }; //console.log(maxConsequtiveAnswers('TTFTTFTT', 1));
+
+
+var longestAlternatingSubarray = function longestAlternatingSubarray(nums, threshold) {
+  var i = 0;
+  var j = 0;
+  var maxLen = 0;
+
+  while (i < nums.length) {
+    var currNum = nums[i];
+
+    if (currNum % 2 === 0 && currNum <= threshold) {
+      // start from here
+      j = i;
+      var isEven = true;
+
+      while (j < nums.length && nums[j] <= threshold && nums[j] % 2 === (isEven ? 0 : 1)) {
+        j++;
+        isEven = !isEven;
+      }
+
+      maxLen = Math.max(maxLen, j - i);
+    }
+
+    i++;
+  }
+
+  return maxLen;
+}; //console.log(longestAlternatingSubarray([3, 2, 5, 4], 5));

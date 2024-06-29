@@ -25,3 +25,29 @@ const maxConsequtiveAnswers = (answerKey, k) => {
 };
 
 //console.log(maxConsequtiveAnswers('TTFTTFTT', 1));
+const longestAlternatingSubarray = (nums, threshold) => {
+  let i = 0;
+  let j = 0;
+  let maxLen = 0;
+  while (i < nums.length) {
+    let currNum = nums[i];
+    if (currNum % 2 === 0 && currNum <= threshold) {
+      // start from here
+      j = i;
+      let isEven = true;
+      while (
+        j < nums.length &&
+        nums[j] <= threshold &&
+        nums[j] % 2 === (isEven ? 0 : 1)
+      ) {
+        j++;
+        isEven = !isEven;
+      }
+      maxLen = Math.max(maxLen, j - i);
+    }
+    i++;
+  }
+  return maxLen;
+};
+
+//console.log(longestAlternatingSubarray([3, 2, 5, 4], 5));
