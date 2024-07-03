@@ -14,7 +14,6 @@ const longestWordAfterDeleting = (s, dictionary) => {
       collection.push(word);
     }
   }
-
   collection.sort((a, b) => {
     if (a.length > b.length) {
       return b.length - a.length;
