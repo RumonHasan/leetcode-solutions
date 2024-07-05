@@ -35,6 +35,34 @@ var minCard = function minCard(cards) {
 
   return minLen;
 }; // to get the min array with matching values
+// console.log(
+//   minCard([
+//     70, 37, 70, 41, 1, 62, 71, 49, 38, 50, 29, 76, 29, 41, 22, 66, 88, 18, 85,
+//     53,
+//   ])
+// );
 
 
-console.log(minCard([70, 37, 70, 41, 1, 62, 71, 49, 38, 50, 29, 76, 29, 41, 22, 66, 88, 18, 85, 53]));
+var maxScoreCard = function maxScoreCard(cardPoints, k) {
+  var total = 0;
+  var mainTotal = cardPoints.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+  var subRemovalSize = cardPoints.length - k;
+
+  for (var i = 0; i < subRemovalSize; i++) {
+    total += cardPoints[i];
+  }
+
+  var maxScore = mainTotal - total;
+
+  for (var _i = subRemovalSize; _i < cardPoints.length; _i++) {
+    total -= cardPoints[_i - subRemovalSize];
+    total += cardPoints[_i];
+    maxScore = Math.max(maxScore, mainTotal - total);
+  }
+
+  return maxScore;
+};
+
+console.log(maxScoreCard([1, 2, 3, 4, 5, 6, 1], 3));
