@@ -26,3 +26,23 @@ const lemonadeChange = (bills) => {
 };
 
 //console.log(lemonadeChange([5, 5, 5, 5, 10, 5, 10, 10, 10, 20]));
+
+const findUnsorted = (nums) => {
+  const n = nums.length;
+  let start = -1;
+  let end = -2;
+  let min = nums[n - 1];
+  let max = nums[0];
+
+  for (let i = 1; i < n; i++) {
+    max = Math.max(max, nums[i]);
+    min = Math.min(min, nums[n - 1 - i]);
+
+    if (nums[i] < max) end = i;
+    if (nums[n - 1 - i] > min) start = n - 1 - i;
+  }
+
+  return end - start + 1;
+};
+
+//console.log(findUnsorted([2, 6, 4, 8, 10, 9, 15]));

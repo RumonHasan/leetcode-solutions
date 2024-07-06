@@ -51,3 +51,21 @@ var lemonadeChange = function lemonadeChange(bills) {
 
   return true;
 }; //console.log(lemonadeChange([5, 5, 5, 5, 10, 5, 10, 10, 10, 20]));
+
+
+var findUnsorted = function findUnsorted(nums) {
+  var n = nums.length;
+  var start = -1;
+  var end = -2;
+  var min = nums[n - 1];
+  var max = nums[0];
+
+  for (var i = 1; i < n; i++) {
+    max = Math.max(max, nums[i]);
+    min = Math.min(min, nums[n - 1 - i]);
+    if (nums[i] < max) end = i;
+    if (nums[n - 1 - i] > min) start = n - 1 - i;
+  }
+
+  return end - start + 1;
+}; //console.log(findUnsorted([2, 6, 4, 8, 10, 9, 15]));
