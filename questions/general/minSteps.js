@@ -32,3 +32,24 @@ const minSteps = (s, t) => {
 };
 
 //console.log(minSteps('leetcode', 'coats'));
+
+const customSort = (order, s) => {
+  let map = new Map();
+  for (let char of s) {
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+  let result = '';
+  for (let i = 0; i < order.length; i++) {
+    const orderLetter = order[i];
+    if (map.has(orderLetter)) {
+      result += orderLetter.repeat(map.get(orderLetter));
+      map.set(orderLetter, 0);
+    }
+  }
+  for (let [key, value] of map) {
+    result += key.repeat(value);
+  }
+  return result;
+};
+
+console.log(customSort('kqep', 'pekeq'));
