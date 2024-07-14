@@ -2,13 +2,10 @@ const canChoose = (groups, nums) => {
   let end = 0;
   let gIndex = 0;
   while (end < nums.length) {
-    const currNum = nums[end];
-    const singleGroupNum = groups[gIndex][0];
-    if (currNum === singleGroupNum) {
+    if (nums[end] === groups[gIndex][0]) {
       let subMainIndex = end;
       let check = true;
-      for (let i = 0; i < groups[gIndex].length; i++) {
-        const gNum = groups[gIndex][i];
+      for (let gNum of groups[gIndex]) {
         if (nums[subMainIndex] !== gNum) {
           check = false;
           break;
@@ -33,4 +30,4 @@ const canChoose = (groups, nums) => {
 };
 
 // look for disjointed subarrays but in the same order as the groups mentioned
-//console.log(canChoose([[-5, 0]], [2, 0, -2, 5, -1, 2, 4, 3, 4, -5, -5]));
+// console.log(canChoose([[-5, 0]], [2, 0, -2, 5, -1, 2, 4, 3, 4, -5, -5]));

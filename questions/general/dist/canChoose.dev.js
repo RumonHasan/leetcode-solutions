@@ -5,24 +5,39 @@ var canChoose = function canChoose(groups, nums) {
   var gIndex = 0;
 
   while (end < nums.length) {
-    var currNum = nums[end];
-    var singleGroupNum = groups[gIndex][0];
-
-    if (currNum === singleGroupNum) {
+    if (nums[end] === groups[gIndex][0]) {
       var subMainIndex = end;
       var check = true;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-      for (var i = 0; i < groups[gIndex].length; i++) {
-        var gNum = groups[gIndex][i];
+      try {
+        for (var _iterator = groups[gIndex][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var gNum = _step.value;
 
-        if (nums[subMainIndex] !== gNum) {
-          check = false;
-          break;
+          if (nums[subMainIndex] !== gNum) {
+            check = false;
+            break;
+          }
+
+          subMainIndex++;
+        } // if match is found then increase to the next array
+
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
         }
-
-        subMainIndex++;
-      } // if match is found then increase to the next array
-
+      }
 
       if (check) {
         end = subMainIndex;
@@ -41,4 +56,4 @@ var canChoose = function canChoose(groups, nums) {
 
   return false;
 }; // look for disjointed subarrays but in the same order as the groups mentioned
-//console.log(canChoose([[-5, 0]], [2, 0, -2, 5, -1, 2, 4, 3, 4, -5, -5]));
+// console.log(canChoose([[-5, 0]], [2, 0, -2, 5, -1, 2, 4, 3, 4, -5, -5]));
