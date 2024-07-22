@@ -40,4 +40,25 @@ const maxPower = (s) => {
   return max;
 };
 
-console.log(maxPower('abbcccddddeeeeedcba'));
+//console.log(maxPower('abbcccddddeeeeedcba'));
+
+const longestOnes = (nums, k) => {
+  let end = 0;
+  let start = 0;
+  let max = 0;
+  let zero = 0;
+  while (end < nums.length) {
+    nums[end] === 0 && zero++;
+    while (zero > k) {
+      if (nums[start] === 0) zero--;
+      start++;
+    }
+    max = Math.max(end - start + 1, max);
+    end++;
+  }
+  return max;
+};
+
+console.log(
+  longestOnes([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3)
+);

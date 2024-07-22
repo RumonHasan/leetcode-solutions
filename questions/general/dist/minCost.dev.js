@@ -49,6 +49,28 @@ var maxPower = function maxPower(s) {
   }
 
   return max;
+}; //console.log(maxPower('abbcccddddeeeeedcba'));
+
+
+var longestOnes = function longestOnes(nums, k) {
+  var end = 0;
+  var start = 0;
+  var max = 0;
+  var zero = 0;
+
+  while (end < nums.length) {
+    nums[end] === 0 && zero++;
+
+    while (zero > k) {
+      if (nums[start] === 0) zero--;
+      start++;
+    }
+
+    max = Math.max(end - start + 1, max);
+    end++;
+  }
+
+  return max;
 };
 
-console.log(maxPower('abbcccddddeeeeedcba'));
+console.log(longestOnes([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3));
