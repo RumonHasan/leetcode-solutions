@@ -27,4 +27,4 @@ const largestValsFromLabels = (values, labels, numWanted, useLimit) => {
 };
 
 // num limit is numwanted and cannot exceed that
-console.log(largestValsFromLabels([2, 6, 3, 6, 5], [1, 1, 2, 1, 1], 3, 1));
+//console.log(largestValsFromLabels([2, 6, 3, 6, 5], [1, 1, 2, 1, 1], 3, 1));
