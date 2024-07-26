@@ -28,6 +28,31 @@ var findLongestChain = function findLongestChain(pairs) {
   }
 
   return Math.max.apply(Math, _toConsumableArray(dpCount));
+}; // console.log(
+//   findLongestChain([
+//     [1, 2],
+//     [7, 8],
+//     [4, 5],
+//   ])
+// );
+
+
+var rotateString = function rotateString(s, goal) {
+  var array = s.split('');
+  var pushCounter = 0;
+
+  while (true) {
+    if (pushCounter === array.length) break;
+    var first = array.shift();
+    array.push(first);
+    pushCounter++;
+
+    if (array.join('') === goal) {
+      return true;
+    }
+  }
+
+  return false;
 };
 
-console.log(findLongestChain([[1, 2], [7, 8], [4, 5]]));
+console.log(rotateString('abcde', 'cdeab'));

@@ -13,10 +13,28 @@ const findLongestChain = (pairs) => {
   }
   return Math.max(...dpCount);
 };
-console.log(
-  findLongestChain([
-    [1, 2],
-    [7, 8],
-    [4, 5],
-  ])
-);
+
+// console.log(
+//   findLongestChain([
+//     [1, 2],
+//     [7, 8],
+//     [4, 5],
+//   ])
+// );
+
+const rotateString = (s, goal) => {
+  const array = s.split('');
+  let pushCounter = 0;
+  while (true) {
+    if (pushCounter === array.length) break;
+    const first = array.shift();
+    array.push(first);
+    pushCounter++;
+    if (array.join('') === goal) {
+      return true;
+    }
+  }
+  return false;
+};
+
+console.log(rotateString('abcde', 'cdeab'));
