@@ -61,3 +61,35 @@ const checkIfStringBreakable = (s1, s2) => {
 };
 
 //console.log(checkIfStringBreakable('abc', 'xya'));
+
+// getting 10 index letter after changing the string
+const decodeStringAtIndex = (s, k) => {
+  let size = 0;
+  const n = s.length;
+
+  // Calculate the size of the decoded string
+  for (let i = 0; i < n; i++) {
+    if (isNaN(s[i])) {
+      size++;
+    } else {
+      size *= Number(s[i]);
+    }
+  }
+
+  // Work backwards to find the kth character
+  for (let i = n - 1; i >= 0; i--) {
+    k %= size;
+    if (k === 0 && isNaN(s[i])) {
+      return s[i];
+    }
+
+    if (isNaN(s[i])) {
+      size--;
+    } else {
+      size /= Number(s[i]);
+    }
+  }
+  return size;
+};
+
+console.log(decodeStringAtIndex('a2345678999999999999999', 1));
