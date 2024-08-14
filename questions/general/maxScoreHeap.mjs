@@ -1,10 +1,12 @@
 // based on the three elements chosen
 import { MinPriorityQueue } from '@datastructures-js/priority-queue';
 
+// using in built priority queue data structures
 const maxScore = (nums1, nums2, k) => {
   let minHeap = new MinPriorityQueue();
   let maxSum = 0;
   let heapSum = 0;
+  // main key is to sort it here based on the second array in descending order while maintaining the index order connection to the first array
   let sortedPairArray = nums1
     .map((item, index) => [item, nums2[index]])
     .sort((a, b) => b[1] - a[1]);

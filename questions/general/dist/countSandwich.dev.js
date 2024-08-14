@@ -1,0 +1,46 @@
+"use strict";
+
+var countSandwich = function countSandwich(students, sandwiches) {
+  // simple while true approach
+  var end = 0;
+  var remainingStudents = 0;
+  var shiftCounter = 0;
+
+  while (true) {
+    if (sandwiches.length === 0 || students.length === 0) break;
+    if (shiftCounter === sandwiches.length) break;
+    var currSand = sandwiches[end];
+    var currStudent = students[end];
+
+    if (currSand === currStudent) {
+      students.shift();
+      sandwiches.shift();
+      shiftCounter = 0;
+    } else if (currSand !== currStudent) {
+      students.push(students.shift());
+      shiftCounter++;
+    }
+  }
+
+  remainingStudents = students.length;
+  return remainingStudents;
+}; //console.log(countSandwich([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
+
+/*
+
+1 1 0 0     0 0 1 1
+
+1001
+0011
+011
+11 11
+
+
+11001 - 00011
+10011
+00111
+0111 - 0011
+111 - 011
+111
+
+*/
