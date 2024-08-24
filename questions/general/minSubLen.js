@@ -3,6 +3,7 @@ const minSubLen = (target, nums) => {
   let start = 0;
   let total = 0;
   let maxLen = Infinity;
+  // basic sliding window appraoch
   while (end < nums.length) {
     const currNum = nums[end];
     total += currNum;

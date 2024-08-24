@@ -4,7 +4,7 @@ var minSubLen = function minSubLen(target, nums) {
   var end = 0;
   var start = 0;
   var total = 0;
-  var maxLen = Infinity;
+  var maxLen = Infinity; // basic sliding window appraoch
 
   while (end < nums.length) {
     var currNum = nums[end];
