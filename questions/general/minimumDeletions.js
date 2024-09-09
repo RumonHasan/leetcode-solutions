@@ -37,3 +37,20 @@ const minimumDeletionsTillBalanced = (s) => {
 //     'aabbbbaabababbbbaaaaaabbababaaabaabaabbbabbbbabbabbababaabaababbbbaaaaabbabbabaaaabbbabaaaabbaaabbbaabbaaaaabaa'
 //   )
 // );
+// checing whether all a before b or or not.. return true or false
+const checkAllBeforeA = (s) => {
+  let arr = [...s];
+  if (arr.every((l) => l == 'b') || arr.every((l) => l == 'a')) return true;
+  let aCount = 0;
+  let firstBIndex = s.indexOf('b');
+  for (let char of s) {
+    char === 'a' && aCount++;
+  }
+  let checkACount = 0;
+  for (let i = 0; i < firstBIndex; i++) {
+    if (arr[i] === 'a') checkACount++;
+  }
+  return checkACount === aCount;
+};
+
+//console.log(checkAllBeforeA('aaabbb'));

@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var minimumDeletionsTillBalanced = function minimumDeletionsTillBalanced(s) {
   var aDp = new Array(s.length).fill(0);
   var minCount = s.length; // cannot exceed the total length of s
@@ -46,3 +54,48 @@ var minimumDeletionsTillBalanced = function minimumDeletionsTillBalanced(s) {
 //     'aabbbbaabababbbbaaaaaabbababaaabaabaabbbabbbbabbabbababaabaababbbbaaaaabbabbabaaaabbbabaaaabbaaabbbaabbaaaaabaa'
 //   )
 // );
+// checing whether all a before b or or not.. return true or false
+
+
+var checkAllBeforeA = function checkAllBeforeA(s) {
+  var arr = _toConsumableArray(s);
+
+  if (arr.every(function (l) {
+    return l == 'b';
+  }) || arr.every(function (l) {
+    return l == 'a';
+  })) return true;
+  var aCount = 0;
+  var firstBIndex = s.indexOf('b');
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = s[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _char = _step.value;
+      _char === 'a' && aCount++;
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  var checkACount = 0;
+
+  for (var i = 0; i < firstBIndex; i++) {
+    if (arr[i] === 'a') checkACount++;
+  }
+
+  return checkACount === aCount;
+}; //console.log(checkAllBeforeA('aaabbb'));
