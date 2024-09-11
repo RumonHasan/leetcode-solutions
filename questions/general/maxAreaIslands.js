@@ -2,13 +2,13 @@ const maxAreaIslands = (grid) => {
   let maxArea = 0;
   const ROW = grid.length;
   const COL = grid[0].length;
-
   const dfs = (row, col) => {
     if (row < 0 || col < 0 || row >= ROW || col >= COL || grid[row][col] === 0)
       return 0;
 
     grid[row][col] = 0;
 
+    // the return value is turned into a number
     return (
       1 +
       dfs(row - 1, col) +
