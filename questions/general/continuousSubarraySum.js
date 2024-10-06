@@ -24,3 +24,15 @@ const continuousSubarraySum = (nums, k) => {
 };
 
 console.log(continuousSubarraySum([23, 2, 6, 4, 7], 6));
+
+// min operations for nums and x
+const minOperations = (nums, x) => {
+  let prefixSum = 0;
+  let end = 0;
+  let start = 0;
+  while (end < nums.length) {
+    end++;
+  }
+};
+
+console.log(minOperations([3, 2, 20, 1, 1, 3], 10));

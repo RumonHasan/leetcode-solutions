@@ -28,4 +28,16 @@ var continuousSubarraySum = function continuousSubarraySum(nums, k) {
   return false;
 };
 
-console.log(continuousSubarraySum([23, 2, 6, 4, 7], 6));
+console.log(continuousSubarraySum([23, 2, 6, 4, 7], 6)); // min operations for nums and x
+
+var minOperations = function minOperations(nums, x) {
+  var prefixSum = 0;
+  var end = 0;
+  var start = 0;
+
+  while (end < nums.length) {
+    end++;
+  }
+};
+
+console.log(minOperations([3, 2, 20, 1, 1, 3], 10));
