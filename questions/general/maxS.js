@@ -32,3 +32,27 @@ const maxSwap = (num) => {
 };
 // using prefix sum
 console.log(maxSwap('9973'));
+
+const balloons = (text) => {
+  const word = 'balloon';
+  let map = new Map();
+  let counter = 0;
+  for (let char of text) {
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+  while (map.get('b') > 0) {
+    let string = '';
+    for (let char of word) {
+      if (map.get(char) > 0) {
+        string += char;
+      } else {
+        break;
+      }
+      map.set(char, map.get(char) - 1);
+    }
+    if (string === word) counter++;
+  }
+  return counter;
+};
+
+console.log(balloons('loonbalxballpoon'));
