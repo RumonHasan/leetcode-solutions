@@ -87,3 +87,37 @@ const appleDistribution = (apple, capacity) => {
 };
 
 //console.log(appleDistribution([5, 5, 5], [2, 4, 2, 7]));
+
+// check whether swapping atleast one letter can equal to goal or not
+const buddyStrings = (s, goal) => {
+  if (s.length !== goal.length) return false;
+  let set = new Set(s);
+  if (s == goal) return set.size < goal.length; // checking whether the letters are same or not
+  // basic oc map to get occurence
+  const createOc = (string) => {
+    let map = new Map();
+    for (let char of string) {
+      map.set(char, (map.get(char) || 0) + 1);
+    }
+    return map;
+  };
+  let sMap = createOc(s);
+  let gMap = createOc(goal);
+  console.log(sMap, gMap);
+  // checking with each occurence
+  for (let [key, value] of sMap) {
+    if ((gMap.has(key) && gMap.get(key) !== value) || !gMap.has(key)) {
+      return false;
+    }
+  }
+  // final check to see whether any of the letters appear at two different places or not
+  let counter = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== goal[i]) {
+      counter++;
+    }
+  }
+  return counter < 3;
+};
+
+console.log(buddyStrings('abcd', 'badc'));
