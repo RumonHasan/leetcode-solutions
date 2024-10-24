@@ -25,4 +25,42 @@ const closeStrings = (word1, word2) => {
 };
 
 // remember the characters have to be mutual and exisitng in both
-console.log(closeStrings('abbzzca', 'babzzcz'));
+//console.log(closeStrings('abbzzca', 'babzzcz'));
+// all the prefix have to be present
+const longestWord = (words) => {
+  words.sort((a, b) => a.length - b.length);
+  let set = new Set(words);
+  let collection = [];
+  let lng = 0;
+  for (let word of words) {
+    let prefString = '';
+    let check = true;
+    for (let char of word) {
+      prefString += char;
+      if (!set.has(prefString)) {
+        check = false;
+        break;
+      }
+    }
+    if (check) {
+      collection.push(word);
+      lng = Math.max(lng, word.length);
+    }
+  }
+
+  collection.sort((a, b) => b.length - a.length);
+  let res = [];
+  for (let word of collection) {
+    if (word.length === lng) {
+      res.push(word);
+    } else {
+      break;
+    }
+  }
+  res.sort((a, b) => a.localeCompare(b));
+  return res[0] === undefined ? '' : res[0];
+};
+
+console.log(
+  longestWord(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple'])
+);

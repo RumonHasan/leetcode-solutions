@@ -78,6 +78,94 @@ var closeStrings = function closeStrings(word1, word2) {
 
   return true;
 }; // remember the characters have to be mutual and exisitng in both
+//console.log(closeStrings('abbzzca', 'babzzcz'));
+// all the prefix have to be present
 
 
-console.log(closeStrings('abbzzca', 'babzzcz'));
+var longestWord = function longestWord(words) {
+  words.sort(function (a, b) {
+    return a.length - b.length;
+  });
+  var set = new Set(words);
+  var collection = [];
+  var lng = 0;
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = words[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var word = _step3.value;
+      var prefString = '';
+      var check = true;
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+        for (var _iterator4 = word[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var _char3 = _step4.value;
+          prefString += _char3;
+
+          if (!set.has(prefString)) {
+            check = false;
+            break;
+          }
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+            _iterator4["return"]();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
+          }
+        }
+      }
+
+      if (check) {
+        collection.push(word);
+        lng = Math.max(lng, word.length);
+      }
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+        _iterator3["return"]();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  collection.sort(function (a, b) {
+    return b.length - a.length;
+  });
+  var res = [];
+
+  for (var _i = 0, _collection = collection; _i < _collection.length; _i++) {
+    var _word = _collection[_i];
+
+    if (_word.length === lng) {
+      res.push(_word);
+    } else {
+      break;
+    }
+  }
+
+  res.sort(function (a, b) {
+    return a.localeCompare(b);
+  });
+  return res[0] === undefined ? '' : res[0];
+};
+
+console.log(longestWord(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple']));
