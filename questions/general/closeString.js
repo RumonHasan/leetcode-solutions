@@ -64,3 +64,4 @@ const longestWord = (words) => {
 console.log(
   longestWord(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple'])
 );
+s
