@@ -31,9 +31,8 @@ var longestSemiRepeatitiveString = function longestSemiRepeatitiveString(s) {
   }
 
   return maxLen;
-};
-
-console.log(longestSemiRepeatitiveString('5227886336789')); // answer should be 6
+}; //console.log(longestSemiRepeatitiveString('5227886336789'));
+// answer should be 6
 
 /* 
  0, 1,2,3,4,5,6,7,8
