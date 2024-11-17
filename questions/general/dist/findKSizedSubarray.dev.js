@@ -13,7 +13,7 @@ var findKSizedSubarray = function findKSizedSubarray(nums, k) {
     }
   }
 
-  result.push(counter === k ? nums[k - 1] : -1); // initial counter for k size check;
+  result.push(counter === k ? nums[k - 1] : -1); // if counter is k then add the last element;
 
   var end = k;
   var start = 0;
@@ -40,6 +40,47 @@ var findKSizedSubarray = function findKSizedSubarray(nums, k) {
 
   return result;
 }; // have to find k sized consequtive power of subarrays
+//console.log(findKSizedSubarray([1, 2, 3, 4, 3, 2, 5], 3));
+// checking for max unique subarray sum
 
 
-console.log(findKSizedSubarray([1, 2, 3, 4, 3, 2, 5], 3));
+var maxSubarraySum = function maxSubarraySum(nums, k) {
+  var map = new Map();
+  var currTotal = 0;
+  var max = 0;
+
+  for (var i = 0; i < k; i++) {
+    var num = nums[i];
+    map.set(num, (map.get(num) || 0) + 1);
+    currTotal += num;
+  }
+
+  if (map.size === k) {
+    max = currTotal;
+  }
+
+  for (var _i = k; _i < nums.length; _i++) {
+    var curr = nums[_i];
+    var start = nums[_i - k];
+
+    if (map.has(start)) {
+      map.set(start, map.get(start) - 1);
+
+      if (map.get(start) === 0) {
+        map["delete"](start);
+      }
+    }
+
+    map.set(curr, (map.get(curr) || 0) + 1);
+    currTotal -= start;
+    currTotal += curr;
+
+    if (map.size === k) {
+      max = Math.max(max, currTotal);
+    }
+  }
+
+  return max;
+};
+
+console.log(maxSubarraySum([1, 5, 4, 2, 9, 9, 9], 3));
