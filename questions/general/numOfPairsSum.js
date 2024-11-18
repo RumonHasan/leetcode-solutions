@@ -44,3 +44,25 @@ const meanOperationsToMakeKEqual = (nums, k) => {
 
 // if the median is less than or equal to k increase the value in the right half and if the median is greater than k reduce the values in left half
 //console.log(meanOperationsToMakeKEqual([45, 50, 89, 30, 4, 5, 91, 58], 31));
+
+// checking for unique set if so getting the final length
+const maxProductWords = (words) => {
+  let setCollection = [];
+  for (let word of words) {
+    setCollection.push(new Set(word.split('')));
+  }
+  let maxLen = 0;
+  for (let i = 0; i < words.length; i++) {
+    for (j = i + 1; j < words.length; j++) {
+      const checkArray = [...setCollection[i]];
+      const checkSet = setCollection[j];
+      const check = checkArray.some((letter) => checkSet.has(letter));
+      if (!check) {
+        maxLen = Math.max(maxLen, words[i].length * words[j].length);
+      }
+    }
+  }
+  return maxLen;
+};
+
+//console.log(maxProductWords(['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef']));
