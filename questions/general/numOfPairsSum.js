@@ -66,3 +66,33 @@ const maxProductWords = (words) => {
 };
 
 //console.log(maxProductWords(['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef']));
+
+const findNumberOfLis = (nums) => {
+  let dp = new Array(nums.length).fill(1);
+  let count = new Array(nums.length).fill(1);
+  for (let i = nums.length - 1; i >= 0; i--) {
+    const checkEl = nums[i];
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[j] > checkEl) {
+        if (dp[j] + 1 > dp[i]) {
+          dp[i] = dp[j] + 1;
+          count[i] = count[j];
+          // tracks the count of the next series if the dp length is more or an additional sequence is possible
+        } else if (dp[j] + 1 === dp[i]) {
+          count[i] += count[j];
+        }
+      }
+    }
+  }
+  let maxLen = Math.max(...dp);
+  let result = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (dp[i] === maxLen) {
+      result += count[i];
+      break;
+    }
+  }
+  return result;
+};
+
+console.log(findNumberOfLis([7, 1, 3, 5, 4, 7]));

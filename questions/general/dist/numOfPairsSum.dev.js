@@ -111,3 +111,38 @@ var maxProductWords = function maxProductWords(words) {
 
   return maxLen;
 }; //console.log(maxProductWords(['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef']));
+
+
+var findNumberOfLis = function findNumberOfLis(nums) {
+  var dp = new Array(nums.length).fill(1);
+  var count = new Array(nums.length).fill(1);
+
+  for (var i = nums.length - 1; i >= 0; i--) {
+    var checkEl = nums[i];
+
+    for (var _j2 = i + 1; _j2 < nums.length; _j2++) {
+      if (nums[_j2] > checkEl) {
+        if (dp[_j2] + 1 > dp[i]) {
+          dp[i] = dp[_j2] + 1;
+          count[i] = count[_j2]; // tracks the count of the next series if the dp length is more or an additional sequence is possible
+        } else if (dp[_j2] + 1 === dp[i]) {
+          count[i] += count[_j2];
+        }
+      }
+    }
+  }
+
+  var maxLen = Math.max.apply(Math, _toConsumableArray(dp));
+  var result = 0;
+
+  for (var _i = 0; _i < nums.length; _i++) {
+    if (dp[_i] === maxLen) {
+      result += count[_i];
+      break;
+    }
+  }
+
+  return result;
+};
+
+console.log(findNumberOfLis([7, 1, 3, 5, 4, 7]));
