@@ -181,3 +181,63 @@ var takeCharsFromLeftToRight = function takeCharsFromLeftToRight(s, k) {
 
   return s.length - maxLen;
 }; //console.log(takeCharsFromLeftToRight('aabaaaacaabc', 2));
+
+
+var numberOfEqualDominoes = function numberOfEqualDominoes(dominoes) {
+  var count = 0;
+  var map = new Map();
+
+  for (var i = 0; i < dominoes.length; i++) {
+    var currDomino = dominoes[i].join('');
+    var reverse = dominoes[i].reverse().join(''); // adding both reverse and normal domino
+
+    count += map.get(currDomino) || 0;
+
+    if (map.has(reverse) && reverse !== currDomino) {
+      // to make sure about the same numbers
+      count += map.get(reverse) || 0;
+    } // adding the current domino to the map
+
+
+    if (map.has(currDomino)) {
+      map.set(currDomino, map.get(currDomino) + 1);
+    } else {
+      map.set(currDomino, 1);
+    }
+  }
+
+  return count;
+}; // console.log(
+//   numberOfEqualDominoes([
+//     [1, 2],
+//     [1, 2],
+//     [1, 1],
+//     [1, 2],
+//     [2, 2],
+//   ])
+// );
+
+
+var duplicateZeroes = function duplicateZeroes(arr) {
+  var dp = new Array(arr.length).fill(0);
+  var end = 0;
+  var arrIndex = 0;
+
+  while (end < dp.length) {
+    var currElement = arr[arrIndex];
+
+    if (currElement !== 0) {
+      dp[end] = currElement;
+      end++;
+    } else if (currElement === 0) {
+      end += 2;
+    }
+
+    arrIndex++;
+  }
+
+  for (var i = 0; i < dp.length; i++) {
+    arr[i] = dp[i];
+  }
+}; // duplicating zeroes and pushing the remaining digits out and maintaining the same length
+//console.log(duplicateZeroes([1, 0, 2, 3, 0, 4, 5, 0]));
