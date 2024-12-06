@@ -2,9 +2,9 @@ const shortestUncommonSubstring = (arr) => {
   let strMap = new Map();
   let dp = new Array(arr.length).fill('');
   // collect all the substrings
-  for (let i = 0; i < arr.length; i++) {
-    const string = arr[i];
-    const index = i;
+  for (let strIndex in arr) {
+    const string = arr[strIndex];
+    const index = Number(strIndex);
     for (let j = 0; j < string.length; j++) {
       for (let k = j; k < string.length; k++) {
         const substring = string.slice(j, k + 1);
@@ -16,13 +16,14 @@ const shortestUncommonSubstring = (arr) => {
       }
     }
   }
-  // isolating the ones with single size
+  // isolating the ones with single size and injecting them with the appropriate indices
   let indexMap = new Map();
   for (const [key, value] of strMap) {
     if (value.size === 1) {
       const [index] = value;
       if (indexMap.has(index)) {
         const existingKey = indexMap.get(index);
+        // sorted based on existing keys and localecomparison based on the lexicological order
         if (
           existingKey.length > key.length ||
           (existingKey.length === key.length && existingKey > key)
@@ -34,7 +35,7 @@ const shortestUncommonSubstring = (arr) => {
       }
     }
   }
-  // populating result
+  // populating result based on the index set value
   for (const [key, value] of indexMap) {
     dp[Number(key)] = value;
   }

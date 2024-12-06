@@ -12,9 +12,9 @@ var shortestUncommonSubstring = function shortestUncommonSubstring(arr) {
   var strMap = new Map();
   var dp = new Array(arr.length).fill(''); // collect all the substrings
 
-  for (var i = 0; i < arr.length; i++) {
-    var string = arr[i];
-    var index = i;
+  for (var strIndex in arr) {
+    var string = arr[strIndex];
+    var index = Number(strIndex);
 
     for (var j = 0; j < string.length; j++) {
       for (var k = j; k < string.length; k++) {
@@ -27,7 +27,7 @@ var shortestUncommonSubstring = function shortestUncommonSubstring(arr) {
         }
       }
     }
-  } // isolating the ones with single size
+  } // isolating the ones with single size and injecting them with the appropriate indices
 
 
   var indexMap = new Map();
@@ -46,7 +46,7 @@ var shortestUncommonSubstring = function shortestUncommonSubstring(arr) {
             _index = _value[0];
 
         if (indexMap.has(_index)) {
-          var existingKey = indexMap.get(_index);
+          var existingKey = indexMap.get(_index); // sorted based on existing keys and localecomparison based on the lexicological order
 
           if (existingKey.length > key.length || existingKey.length === key.length && existingKey > key) {
             indexMap.set(_index, key);
@@ -55,7 +55,7 @@ var shortestUncommonSubstring = function shortestUncommonSubstring(arr) {
           indexMap.set(_index, key);
         }
       }
-    } // populating result
+    } // populating result based on the index set value
 
   } catch (err) {
     _didIteratorError = true;
