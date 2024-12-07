@@ -91,7 +91,27 @@ var repeatedStringMatching = function repeatedStringMatching(a, b) {
     var checkMax = kmpAlgoCheck(a.repeat(maxRepeatedCount));
     if (checkMax) return maxRepeatedCount;
     return -1;
+  }; // using general includes function
+
+
+  var simpleSolution = function simpleSolution() {
+    var maxRepeatedCount = Math.ceil(b.length / a.length) + 1;
+    var minReapeatedCount = Math.ceil(b.length / a.length);
+
+    if (a.repeat(minReapeatedCount).includes(b)) {
+      return minReapeatedCount;
+    }
+
+    ;
+
+    if (a.repeat(maxRepeatedCount).includes(b)) {
+      return maxRepeatedCount;
+    }
+
+    return -1;
   };
+
+  console.log(simpleSolution());
 };
 
 console.log(repeatedStringMatching("bcacbcbbbbbbbacbcaacbccaa", "bbcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaaabcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaaabcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaaabcacbcbbbbbbbacbcaacbccaaabcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaabbcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaacbcacbcbbbbbbbacbcaacbccaaabcacbcbbbbbbbacbcaacbccaaa"));

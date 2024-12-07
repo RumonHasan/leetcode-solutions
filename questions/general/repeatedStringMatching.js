@@ -63,6 +63,23 @@ const repeatedStringMatching = (a, b)=>{
         
         return -1;
     }
+
+    // using general includes function
+    const simpleSolution = ()=>{
+        let maxRepeatedCount = Math.ceil(b.length / a.length) + 1;
+        let minReapeatedCount = Math.ceil(b.length / a.length);
+
+        if(a.repeat(minReapeatedCount).includes(b)){
+            return minReapeatedCount;
+        };
+        if(a.repeat(maxRepeatedCount).includes(b)){
+            return maxRepeatedCount;
+        }
+
+            return -1;
+    }
+
+    console.log(simpleSolution());
  
 };
 
