@@ -31,10 +31,44 @@ const rotatingBox = (boxGrid) => {
   return newGrid;
 };
 
+// console.log(
+//   rotatingBox([
+//     ['#', '#', '*', '.', '*', '.'],
+//     ['#', '#', '#', '*', '.', '.'],
+//     ['#', '#', '#', '.', '#', '.'],
+//   ])
+// );
+
+const setMatrix = (matrix) => {
+  let setCol = new Set();
+  let setRows = new Set();
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === 0) {
+        setCol.add(j);
+        setRows.add(i);
+      }
+    }
+  }
+  // change rows
+  for (let row of setRows) {
+    for (let i = 0; i < matrix[0].length; i++) {
+      matrix[row][i] = 0;
+    }
+  }
+  // change cols
+  for (let col of setCol) {
+    for (let i = 0; i < matrix.length; i++) {
+      matrix[i][col] = 0;
+    }
+  }
+  return matrix;
+};
+
 console.log(
-  rotatingBox([
-    ['#', '#', '*', '.', '*', '.'],
-    ['#', '#', '#', '*', '.', '.'],
-    ['#', '#', '#', '.', '#', '.'],
+  setMatrix([
+    [1, 1, 1],
+    [1, 0, 1],
+    [1, 1, 1],
   ])
 );
