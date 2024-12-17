@@ -39,6 +39,29 @@ var findScore = function findScore(nums) {
   return total;
 };
 /*) [1, 2, 2, 3, 3, 5]*/
+//console.log(findScore([2, 1, 3, 4, 5, 2]));
 
 
-console.log(findScore([2, 1, 3, 4, 5, 2]));
+var meanTrimMean = function meanTrimMean(arr) {
+  var sorted = arr.sort(function (a, b) {
+    return a - b;
+  }); // remove top and small 5 % of the elements
+
+  var avgCalc = function avgCalc(array) {
+    return array.reduce(function (acc, curr) {
+      return acc + curr;
+    }, 0) / array.length;
+  };
+
+  var fivePercent = Math.floor(5 / 100 * arr.length);
+  var newArray = [];
+
+  for (var i = fivePercent; i < sorted.length - fivePercent; i++) {
+    newArray.push(sorted[i]);
+  }
+
+  return avgCalc(newArray);
+};
+
+console.log(meanTrimMean([6, 2, 7, 5, 1, 2, 0, 3, 10, 2, 5, 0, 5, 5, 0, 8, 7, 6, 8, 0]));
+var array = [1, 2, 3, 4, 4];
