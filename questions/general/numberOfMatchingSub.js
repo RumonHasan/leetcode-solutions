@@ -10,6 +10,7 @@ const numberOfMatchingSubsequence = (s, words) => {
     for (let i = 0; i < word.length; i++) {
       const currChar = word[i];
       index = string.indexOf(currChar, index + 1); // searching from the prev position plus one
+      // cannot use i here because i checks for the word not the string but the goal is to check from the string
       if (index === -1) {
         map.set(word, false);
         return false;
