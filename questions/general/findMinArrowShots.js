@@ -57,3 +57,33 @@ console.log(
     [3, 4],
   ])
 );
+
+const maxProdOfThreeNumbers = (nums) => {
+  // regular way
+  let collection = [];
+  // scenario 1 where its for all positive
+  let copy = [...nums];
+  for (let i = 0; i < 3; i++) {
+    let maxIndex = 0;
+    for (let j = 0; j < nums.length; j++) {
+      const curr = nums[j];
+      if (curr > nums[maxIndex]) {
+        maxIndex = j;
+      }
+    }
+    collection.push(nums[maxIndex]);
+    nums[maxIndex] = -Infinity;
+  }
+  const allPosVal = collection.reduce((acc, curr) => acc * curr, 1);
+  // there could be negatives
+  const minOne = Math.min(...copy);
+  const minOneIndex = copy.indexOf(minOne);
+  copy.splice(minOneIndex, 1);
+  const minTwo = Math.min(...copy);
+  const max = Math.max(...copy);
+  const mixedVal = minTwo * max * minOne;
+
+  return Math.max(mixedVal, allPosVal);
+};
+
+console.log(maxProdOfThreeNumbers([-100, -2, -3, 1]));

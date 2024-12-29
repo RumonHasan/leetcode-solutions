@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -67,3 +75,39 @@ var nonOverlappingIntervals = function nonOverlappingIntervals(intervals) {
 };
 
 console.log(nonOverlappingIntervals([[1, 2], [1, 3], [2, 3], [3, 4]]));
+
+var maxProdOfThreeNumbers = function maxProdOfThreeNumbers(nums) {
+  // regular way
+  var collection = []; // scenario 1 where its for all positive
+
+  var copy = _toConsumableArray(nums);
+
+  for (var i = 0; i < 3; i++) {
+    var maxIndex = 0;
+
+    for (var j = 0; j < nums.length; j++) {
+      var curr = nums[j];
+
+      if (curr > nums[maxIndex]) {
+        maxIndex = j;
+      }
+    }
+
+    collection.push(nums[maxIndex]);
+    nums[maxIndex] = -Infinity;
+  }
+
+  var allPosVal = collection.reduce(function (acc, curr) {
+    return acc * curr;
+  }, 1); // there could be negatives
+
+  var minOne = Math.min.apply(Math, _toConsumableArray(copy));
+  var minOneIndex = copy.indexOf(minOne);
+  copy.splice(minOneIndex, 1);
+  var minTwo = Math.min.apply(Math, _toConsumableArray(copy));
+  var max = Math.max.apply(Math, _toConsumableArray(copy));
+  var mixedVal = minTwo * max * minOne;
+  return Math.max(mixedVal, allPosVal);
+};
+
+console.log(maxProdOfThreeNumbers([-100, -2, -3, 1]));
