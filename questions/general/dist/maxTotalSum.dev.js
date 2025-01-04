@@ -31,6 +31,38 @@ var maxTotalSum = function maxTotalSum(maximumHeight) {
 ] 
         
 */
+// console.log(maxTotalSum([15, 10, 10, 10, 5]));
 
 
-console.log(maxTotalSum([15, 10, 10, 10, 5]));
+var divideStringsIntoK = function divideStringsIntoK(s, k, fill) {
+  var remainder = s.length % k;
+  var fillCount = k - remainder;
+  var result = [];
+  var group = '';
+  var count = 0;
+
+  for (var i = 0; i < s.length; i++) {
+    var _char = s[i];
+
+    if (count === k) {
+      result.push(group);
+      group = '';
+      count = 0;
+    }
+
+    group += _char;
+    count++;
+
+    if (i === s.length - 1) {
+      result.push(group);
+    }
+  }
+
+  if (fillCount > 0 && remainder !== 0) {
+    result[result.length - 1] += fill.repeat(fillCount);
+  }
+
+  return result;
+};
+
+console.log(divideStringsIntoK('abcdefghi', 3, 'x'));
