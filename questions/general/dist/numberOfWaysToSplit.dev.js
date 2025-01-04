@@ -17,7 +17,8 @@ var numberOfWaysToSplit = function numberOfWaysToSplit(nums) {
   } // main algo to check for valid splits
 
 
-  rightPref.reverse();
+  rightPref.reverse(); // reduces run time significantly when reversed once instead of adding by  unshift
+
   var splitCounter = 0;
 
   for (var _i2 = 0; _i2 < n - 1; _i2++) {

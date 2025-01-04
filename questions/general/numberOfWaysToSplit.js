@@ -11,7 +11,7 @@ const numberOfWaysToSplit = (nums) => {
     rightPref.push(rightPref[rightPref.length - 1] + BigInt(nums[i]));
   }
   // main algo to check for valid splits
-  rightPref.reverse();
+  rightPref.reverse(); // reduces run time significantly when reversed once instead of adding by  unshift
   let splitCounter = 0;
   for (let i = 0; i < n - 1; i++) {
     const prefLeft = leftPref[i];
