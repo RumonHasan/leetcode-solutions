@@ -49,4 +49,34 @@ const uniqueLengthThreePal = (s) => {
   return set.size;
 };
 
-console.log(uniqueLengthThreePal('aabca'));
+// console.log(uniqueLengthThreePal('aabca'));
+
+const houseRobberCircular = (nums) => {
+  let left = nums.slice(0, nums.length - 1);
+  let right = nums.slice(1, nums.length);
+  if (nums.length === 1) {
+    return nums[0];
+  }
+  const dpCheck = (arr) => {
+    let dp = new Array(arr.length).fill(0);
+    // 1D dp approach
+    for (let i = 0; i < arr.length; i++) {
+      if (i === 0) {
+        dp[i] = arr[i];
+      } else if (i === 1) {
+        dp[i] = Math.max(dp[i - 1], arr[i]);
+      } else {
+        dp[i] = Math.max(dp[i - 1], dp[i - 2] + arr[i]);
+      }
+    }
+
+    return dp[dp.length - 1];
+  };
+
+  const leftVal = dpCheck(left);
+  const rightVal = dpCheck(right);
+
+  return Math.max(rightVal, leftVal);
+};
+
+console.log(houseRobberCircular([1, 2, 3, 1]));

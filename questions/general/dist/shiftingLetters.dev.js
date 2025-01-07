@@ -99,6 +99,36 @@ var uniqueLengthThreePal = function uniqueLengthThreePal(s) {
   }
 
   return set.size;
+}; // console.log(uniqueLengthThreePal('aabca'));
+
+
+var houseRobberCircular = function houseRobberCircular(nums) {
+  var left = nums.slice(0, nums.length - 1);
+  var right = nums.slice(1, nums.length);
+
+  if (nums.length === 1) {
+    return nums[0];
+  }
+
+  var dpCheck = function dpCheck(arr) {
+    var dp = new Array(arr.length).fill(0); // 1D dp approach
+
+    for (var i = 0; i < arr.length; i++) {
+      if (i === 0) {
+        dp[i] = arr[i];
+      } else if (i === 1) {
+        dp[i] = Math.max(dp[i - 1], arr[i]);
+      } else {
+        dp[i] = Math.max(dp[i - 1], dp[i - 2] + arr[i]);
+      }
+    }
+
+    return dp[dp.length - 1];
+  };
+
+  var leftVal = dpCheck(left);
+  var rightVal = dpCheck(right);
+  return Math.max(rightVal, leftVal);
 };
 
-console.log(uniqueLengthThreePal('aabca'));
+console.log(houseRobberCircular([1, 2, 3, 1]));
