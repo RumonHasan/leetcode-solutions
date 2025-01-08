@@ -90,4 +90,76 @@ const minOperations = (boxes) => {
   return res;
 };
 
-console.log(minOperations('001011'));
+//console.log(minOperations('001011'));
+
+const groupAnagrams = (strs) => {
+  let map = new Map();
+
+  for (let i = 0; i < strs.length; i++) {
+    const curr = strs[i];
+
+    const sorted = curr
+      .split('')
+      .sort((a, b) => a.localeCompare(b))
+      .join('');
+
+    if (map.has(sorted)) {
+      map.get(sorted).push(curr);
+    } else {
+      map.set(sorted, [curr]);
+    }
+  }
+  let collection = [];
+  map.forEach((value, _) => collection.push(value));
+  return collection;
+};
+
+//console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+
+const countPrefSuff = (words) => {
+  let counter = 0;
+
+  const isPrefixSuffix = (checkWord, matchWord) => {
+    // checking start
+    let startCheck = false;
+    let checkIndex = 0;
+    for (let i = 0; i < matchWord.length; i++) {
+      if (matchWord[i] === checkWord[checkIndex]) {
+        checkIndex++;
+      } else {
+        break;
+      }
+    }
+    if (checkIndex === checkWord.length) {
+      startCheck = true;
+    }
+    // checking end
+    let endCheck = false;
+    checkIndex = checkWord.length - 1;
+    for (let i = matchWord.length - 1; i >= 0; i--) {
+      if (matchWord[i] === checkWord[checkIndex]) {
+        checkIndex--;
+      } else {
+        break;
+      }
+    }
+    if (checkIndex === -1) {
+      // last first element to check
+      endCheck = true;
+    }
+    return startCheck && endCheck;
+  };
+
+  for (let i = 0; i < words.length; i++) {
+    const checkWord = words[i];
+    for (let j = i + 1; j < words.length; j++) {
+      const matchWord = words[j];
+      if (isPrefixSuffix(checkWord, matchWord)) {
+        counter++;
+      }
+    }
+  }
+  return counter;
+};
+
+console.log(countPrefSuff(['a', 'aba', 'ababa', 'aa']));

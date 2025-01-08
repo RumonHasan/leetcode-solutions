@@ -107,6 +107,86 @@ var minOperations = function minOperations(boxes) {
   }
 
   return res;
+}; //console.log(minOperations('001011'));
+
+
+var groupAnagrams = function groupAnagrams(strs) {
+  var map = new Map();
+
+  for (var i = 0; i < strs.length; i++) {
+    var curr = strs[i];
+    var sorted = curr.split('').sort(function (a, b) {
+      return a.localeCompare(b);
+    }).join('');
+
+    if (map.has(sorted)) {
+      map.get(sorted).push(curr);
+    } else {
+      map.set(sorted, [curr]);
+    }
+  }
+
+  var collection = [];
+  map.forEach(function (value, _) {
+    return collection.push(value);
+  });
+  return collection;
+}; //console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+
+
+var countPrefSuff = function countPrefSuff(words) {
+  var counter = 0;
+
+  var isPrefixSuffix = function isPrefixSuffix(checkWord, matchWord) {
+    // checking start
+    var startCheck = false;
+    var checkIndex = 0;
+
+    for (var i = 0; i < matchWord.length; i++) {
+      if (matchWord[i] === checkWord[checkIndex]) {
+        checkIndex++;
+      } else {
+        break;
+      }
+    }
+
+    if (checkIndex === checkWord.length) {
+      startCheck = true;
+    } // checking end
+
+
+    var endCheck = false;
+    checkIndex = checkWord.length - 1;
+
+    for (var _i3 = matchWord.length - 1; _i3 >= 0; _i3--) {
+      if (matchWord[_i3] === checkWord[checkIndex]) {
+        checkIndex--;
+      } else {
+        break;
+      }
+    }
+
+    if (checkIndex === -1) {
+      // last first element to check
+      endCheck = true;
+    }
+
+    return startCheck && endCheck;
+  };
+
+  for (var i = 0; i < words.length; i++) {
+    var checkWord = words[i];
+
+    for (var j = i + 1; j < words.length; j++) {
+      var matchWord = words[j];
+
+      if (isPrefixSuffix(checkWord, matchWord)) {
+        counter++;
+      }
+    }
+  }
+
+  return counter;
 };
 
-console.log(minOperations('001011'));
+console.log(countPrefSuff(['a', 'aba', 'ababa', 'aa']));
