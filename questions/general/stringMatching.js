@@ -162,4 +162,51 @@ const countPrefSuff = (words) => {
   return counter;
 };
 
-console.log(countPrefSuff(['a', 'aba', 'ababa', 'aa']));
+//console.log(countPrefSuff(['a', 'aba', 'ababa', 'aa']));
+
+const wordSubsets = (words1, words2) => {
+  let map = new Map();
+  if (words2.length === 0) return [];
+  // get max freq based on chars of all the words2
+  for (let i = 0; i < words2.length; i++) {
+    const word = words2[i];
+    let localMap = new Map();
+
+    for (let char of word) {
+      localMap.set(char, (localMap.get(char) || 0) + 1);
+    }
+    // updating the big map
+    for (const [key, value] of localMap) {
+      if (map.has(key) && value > map.get(key)) {
+        map.set(key, value);
+      }
+      if (!map.has(key)) {
+        map.set(key, value);
+      }
+    }
+  }
+  let collection = [];
+  // checking with words1 in order to find whether its possible or not
+  for (let word of words1) {
+    let wordMap = new Map();
+    for (let char of word) {
+      wordMap.set(char, (wordMap.get(char) || 0) + 1);
+    }
+    let check = true;
+    for (const [key, value] of map) {
+      if (!wordMap.has(key) || (wordMap.has(key) && value > wordMap.get(key))) {
+        check = false;
+        break;
+      }
+    }
+    if (check) {
+      collection.push(word);
+    }
+  }
+
+  return collection;
+};
+
+console.log(
+  wordSubsets(['amazon', 'apple', 'facebook', 'google', 'leetcode'], ['e', 'o'])
+);
