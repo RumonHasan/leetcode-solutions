@@ -207,6 +207,52 @@ const wordSubsets = (words1, words2) => {
   return collection;
 };
 
+const countingWordsWithGivenPrefix = (words, pref) => {
+  let count = 0;
+
+  const isPrefCheck = (word, pref) => {
+    let prefIndex = 0;
+    for (let i = 0; i < word.length; i++) {
+      const letter = word[i];
+      if (letter === pref[prefIndex]) {
+        prefIndex++;
+      } else {
+        break;
+      }
+    }
+    return prefIndex === pref.length;
+  };
+
+  for (let word of words) {
+    if (isPrefCheck(word, pref)) {
+      count++;
+    }
+  }
+
+  return count;
+};
+
 console.log(
-  wordSubsets(['amazon', 'apple', 'facebook', 'google', 'leetcode'], ['e', 'o'])
+  countingWordsWithGivenPrefix(['pay', 'attention', 'practice', 'attend'], 'at')
 );
+
+// frequency sort
+const frequencySort = (s) => {
+  let map = new Map();
+  for (let char of s) {
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+  let collection = [];
+  for (const [key, value] of map) {
+    collection.push([key, value]);
+  }
+  collection.sort((a, b) => b[1] - a[1]);
+  let res = '';
+  for (let i = 0; i < collection.length; i++) {
+    const currCollection = collection[i];
+    res += currCollection[0].repeat(currCollection[1]);
+  }
+  return res;
+};
+
+//console.log(frequencySort('cccaaa'));

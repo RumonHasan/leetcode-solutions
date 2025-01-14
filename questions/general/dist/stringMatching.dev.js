@@ -351,4 +351,120 @@ var wordSubsets = function wordSubsets(words1, words2) {
   return collection;
 };
 
-console.log(wordSubsets(['amazon', 'apple', 'facebook', 'google', 'leetcode'], ['e', 'o']));
+var countingWordsWithGivenPrefix = function countingWordsWithGivenPrefix(words, pref) {
+  var count = 0;
+
+  var isPrefCheck = function isPrefCheck(word, pref) {
+    var prefIndex = 0;
+
+    for (var i = 0; i < word.length; i++) {
+      var letter = word[i];
+
+      if (letter === pref[prefIndex]) {
+        prefIndex++;
+      } else {
+        break;
+      }
+    }
+
+    return prefIndex === pref.length;
+  };
+
+  var _iteratorNormalCompletion6 = true;
+  var _didIteratorError6 = false;
+  var _iteratorError6 = undefined;
+
+  try {
+    for (var _iterator6 = words[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+      var word = _step6.value;
+
+      if (isPrefCheck(word, pref)) {
+        count++;
+      }
+    }
+  } catch (err) {
+    _didIteratorError6 = true;
+    _iteratorError6 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
+        _iterator6["return"]();
+      }
+    } finally {
+      if (_didIteratorError6) {
+        throw _iteratorError6;
+      }
+    }
+  }
+
+  return count;
+};
+
+console.log(countingWordsWithGivenPrefix(['pay', 'attention', 'practice', 'attend'], 'at')); // frequency sort
+
+var frequencySort = function frequencySort(s) {
+  var map = new Map();
+  var _iteratorNormalCompletion7 = true;
+  var _didIteratorError7 = false;
+  var _iteratorError7 = undefined;
+
+  try {
+    for (var _iterator7 = s[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+      var _char3 = _step7.value;
+      map.set(_char3, (map.get(_char3) || 0) + 1);
+    }
+  } catch (err) {
+    _didIteratorError7 = true;
+    _iteratorError7 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion7 && _iterator7["return"] != null) {
+        _iterator7["return"]();
+      }
+    } finally {
+      if (_didIteratorError7) {
+        throw _iteratorError7;
+      }
+    }
+  }
+
+  var collection = [];
+  var _iteratorNormalCompletion8 = true;
+  var _didIteratorError8 = false;
+  var _iteratorError8 = undefined;
+
+  try {
+    for (var _iterator8 = map[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+      var _step8$value = _slicedToArray(_step8.value, 2),
+          key = _step8$value[0],
+          value = _step8$value[1];
+
+      collection.push([key, value]);
+    }
+  } catch (err) {
+    _didIteratorError8 = true;
+    _iteratorError8 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion8 && _iterator8["return"] != null) {
+        _iterator8["return"]();
+      }
+    } finally {
+      if (_didIteratorError8) {
+        throw _iteratorError8;
+      }
+    }
+  }
+
+  collection.sort(function (a, b) {
+    return b[1] - a[1];
+  });
+  var res = '';
+
+  for (var i = 0; i < collection.length; i++) {
+    var currCollection = collection[i];
+    res += currCollection[0].repeat(currCollection[1]);
+  }
+
+  return res;
+}; //console.log(frequencySort('cccaaa'));
