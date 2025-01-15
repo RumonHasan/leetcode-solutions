@@ -107,3 +107,31 @@ console.log(
     5
   )
 );
+
+// finding prefix between common numbers
+const findPrefixBetweenCommonNumbers = (A, B) => {
+  // ugly way
+  let dp = new Array(A.length).fill(0);
+  let map = new Map();
+
+  for (let i = 0; i < A.length; i++) {
+    const aVal = A[i];
+    const bVal = B[i];
+
+    map.set(aVal, (map.get(aVal) || 0) + 1);
+    map.set(bVal, (map.get(bVal) || 0) + 1);
+
+    // if the value is 2 then its common
+    let counter = 0;
+    for (const [_, value] of map) {
+      if (value === 2) {
+        counter++;
+      }
+    }
+    dp[i] = counter;
+  }
+
+  return dp;
+};
+
+console.log(findPrefixBetweenCommonNumbers([1, 3, 2, 4], [3, 1, 2, 4]));
