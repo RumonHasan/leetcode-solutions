@@ -138,3 +138,33 @@ console.log(
     'hit',
   ])
 );
+
+const harmoniusSubs = (nums) => {
+  let map = new Map();
+  let max = 0;
+  for (let num of nums) {
+    map.set(num, (map.get(num) || 0) + 1);
+  }
+  for (const [key, val] of map) {
+    if (map.has(key + 1)) {
+      max = Math.max(max, val + map.get(key + 1));
+    }
+  }
+  return max;
+};
+
+// console.log(harmoniusSubs([1, 3, 2, 2, 5, 2, 3, 7]));
+
+const sumCounts = (nums) => {
+  let ans = 0;
+  for (let i = 0; i < nums.length; i++) {
+    let set = new Set();
+    for (let j = i; j < nums.length; j++) {
+      set.add(nums[j]);
+      ans += Math.pow(set.size, 2);
+    }
+  }
+  return ans;
+};
+
+console.log(sumCounts([1, 2, 1]));

@@ -194,3 +194,80 @@ var mostCommonWords = function mostCommonWords(paragraph, banned) {
 };
 
 console.log(mostCommonWords('Bob hit a ball, the hit BALL flew far after it was hit.', ['hit']));
+
+var harmoniusSubs = function harmoniusSubs(nums) {
+  var map = new Map();
+  var max = 0;
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = nums[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var num = _step3.value;
+      map.set(num, (map.get(num) || 0) + 1);
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+        _iterator3["return"]();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  var _iteratorNormalCompletion4 = true;
+  var _didIteratorError4 = false;
+  var _iteratorError4 = undefined;
+
+  try {
+    for (var _iterator4 = map[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+      var _step4$value = _slicedToArray(_step4.value, 2),
+          key = _step4$value[0],
+          val = _step4$value[1];
+
+      if (map.has(key + 1)) {
+        max = Math.max(max, val + map.get(key + 1));
+      }
+    }
+  } catch (err) {
+    _didIteratorError4 = true;
+    _iteratorError4 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+        _iterator4["return"]();
+      }
+    } finally {
+      if (_didIteratorError4) {
+        throw _iteratorError4;
+      }
+    }
+  }
+
+  return max;
+}; // console.log(harmoniusSubs([1, 3, 2, 2, 5, 2, 3, 7]));
+
+
+var sumCounts = function sumCounts(nums) {
+  var ans = 0;
+
+  for (var i = 0; i < nums.length; i++) {
+    var set = new Set();
+
+    for (var j = i; j < nums.length; j++) {
+      set.add(nums[j]);
+      ans += Math.pow(set.size, 2);
+    }
+  }
+
+  return ans;
+};
+
+console.log(sumCounts([1, 2, 1]));
