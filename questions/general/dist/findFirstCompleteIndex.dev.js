@@ -48,6 +48,149 @@ var firstCompleteIndex = function firstCompleteIndex(arr, mat) {
   }
 }; // step -1 getting the table that contains all the cords of each number
 // step 2- getting the row index array and col index array to store the counters
+// console.log(
+//   firstCompleteIndex(
+//     [1, 4, 5, 2, 6, 3],
+//     [
+//       [4, 3, 5],
+//       [1, 2, 6],
+//     ]
+//   )
+// );
 
 
-console.log(firstCompleteIndex([1, 4, 5, 2, 6, 3], [[4, 3, 5], [1, 2, 6]]));
+var countNumberOfGoodSubarrays = function countNumberOfGoodSubarrays(nums, k) {
+  var pairMap = new Map();
+  var pairCount = 0;
+  var len = nums.length;
+  var end = 0;
+  var left = 0;
+  var totalPairCount = 0;
+
+  while (end < nums.length) {
+    pairMap.set(nums[end], (pairMap.get(nums[end]) || 0) + 1); // adding elements and their count
+
+    pairCount += pairMap.get(nums[end]) - 1; // example count 4 means there can be 3 combination of pairs
+    // if the pair count exceeds k then reduce it and calculate the number of subarrays
+
+    if (pairCount >= k) {
+      while (left < nums.length && pairCount >= k) {
+        totalPairCount += len - end; // reduce the pairs
+
+        pairMap.set(nums[left], (pairMap.get(nums[left]) || 0) - 1);
+        pairCount -= pairMap.get(nums[left]);
+
+        if (pairMap.get(nums[left]) === 0) {
+          pairMap["delete"](nums[left]);
+        }
+
+        left++;
+      }
+    }
+
+    end++;
+  }
+
+  return totalPairCount;
+}; // console.log(countNumberOfGoodSubarrays([3, 1, 4, 3, 2, 2, 4], 2));
+
+
+var resultArray = function resultArray(nums) {
+  var one = [];
+  var two = [];
+
+  for (var i = 0; i < nums.length; i++) {
+    var curr = nums[i];
+
+    if (i === 0) {
+      one.push(nums[i]);
+    } else if (i === 1) {
+      two.push(nums[i]);
+    } else {
+      var check = one[one.length - 1] > two[two.length - 1];
+
+      if (check) {
+        one.push(curr);
+      } else {
+        two.push(curr);
+      }
+    }
+  }
+
+  return [].concat(one, two);
+}; //console.log(resultArray([2, 1, 3]));
+
+
+var mostCommonWords = function mostCommonWords(paragraph, banned) {
+  var arr = paragraph.toLowerCase().replace(/[!?',;.]/g, ' ') // replace punctuation with spaces
+  .split(/\s+/) // split on whitespace
+  .filter(function (word) {
+    return word;
+  });
+  var maxCounter = 0;
+  var map = new Map(); // main iteration
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = arr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var word = _step.value;
+      var wordLower = word.toLowerCase();
+
+      if (!banned.includes(wordLower)) {
+        map.set(wordLower, (map.get(wordLower) || 0) + 1);
+
+        if (map.get(wordLower) > maxCounter) {
+          maxCounter = map.get(wordLower);
+        }
+      }
+    } // getting the max key of value
+
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = map[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var _step2$value = _slicedToArray(_step2.value, 2),
+          key = _step2$value[0],
+          value = _step2$value[1];
+
+      if (value === maxCounter) {
+        return key;
+      }
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+        _iterator2["return"]();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+};
+
+console.log(mostCommonWords('Bob hit a ball, the hit BALL flew far after it was hit.', ['hit']));
