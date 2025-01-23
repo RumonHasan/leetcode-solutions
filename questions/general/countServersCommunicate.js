@@ -30,11 +30,34 @@ const countServerCommunication = (grid) => {
   return serverCount;
 };
 
-console.log(
-  countServerCommunication([
-    [1, 1, 0, 0],
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 1],
-  ])
-);
+// console.log(
+//   countServerCommunication([
+//     [1, 1, 0, 0],
+//     [0, 0, 1, 0],
+//     [0, 0, 1, 0],
+//     [0, 0, 0, 1],
+//   ])
+// );
+
+// return a new array with the number of arrays that are bigger than the current number within the same array
+const smallerNumbersThanCurrent = (nums) => {
+  let result = new Array(nums.length).fill(0);
+  let arr = nums.map((num, i) => [num, i]);
+  // sorting based on ascending
+  arr.sort((a, b) => a[0] - b[0]);
+  // populating sorted array
+  let prevNum = arr[0][0];
+  for (let index = 1; index < arr.length; index++) {
+    const currNum = arr[index][0]; // currrent number
+    if (prevNum == currNum) {
+      result[arr[index][1]] = result[arr[index - 1][1]]; // when the number is the same used the previous index from result arry
+    } else {
+      result[arr[index][1]] = index;
+      prevNum = currNum;
+    }
+  }
+  // handling the duplication issue of similar numbers
+  return result;
+};
+
+console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));

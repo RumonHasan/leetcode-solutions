@@ -33,6 +33,42 @@ var countServerCommunication = function countServerCommunication(grid) {
   }
 
   return serverCount;
+}; // console.log(
+//   countServerCommunication([
+//     [1, 1, 0, 0],
+//     [0, 0, 1, 0],
+//     [0, 0, 1, 0],
+//     [0, 0, 0, 1],
+//   ])
+// );
+// return a new array with the number of arrays that are bigger than the current number within the same array
+
+
+var smallerNumbersThanCurrent = function smallerNumbersThanCurrent(nums) {
+  var result = new Array(nums.length).fill(0);
+  var arr = nums.map(function (num, i) {
+    return [num, i];
+  }); // sorting based on ascending
+
+  arr.sort(function (a, b) {
+    return a[0] - b[0];
+  }); // populating sorted array
+
+  var prevNum = arr[0][0];
+
+  for (var index = 1; index < arr.length; index++) {
+    var currNum = arr[index][0]; // currrent number
+
+    if (prevNum == currNum) {
+      result[arr[index][1]] = result[arr[index - 1][1]]; // when the number is the same used the previous index from result arry
+    } else {
+      result[arr[index][1]] = index;
+      prevNum = currNum;
+    }
+  } // handling the duplication issue of similar numbers
+
+
+  return result;
 };
 
-console.log(countServerCommunication([[1, 1, 0, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 1]]));
+console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
