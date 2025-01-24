@@ -85,4 +85,37 @@ const answerQueries = (nums, queries) => {
   return result;
 };
 
-console.log(answerQueries([4, 5, 2, 1], [3, 10, 21]));
+//console.log(answerQueries([4, 5, 2, 1], [3, 10, 21]));
+
+const reverseOnlyLetter = (s) => {
+  const isCharacterALetter = (char) => {
+    return /[a-zA-Z]/.test(char);
+  };
+  let arr = s.split('');
+
+  let left = 0;
+  let right = s.length - 1;
+
+  while (left < right) {
+    const leftChar = arr[left];
+    const rightChar = arr[right];
+
+    if (isCharacterALetter(leftChar) && isCharacterALetter(rightChar)) {
+      let temp = leftChar;
+      arr[left] = arr[right];
+      arr[right] = temp;
+      left++;
+      right--;
+    } else if (isCharacterALetter(leftChar) && !isCharacterALetter(rightChar)) {
+      right--;
+    } else if (!isCharacterALetter(leftChar) && isCharacterALetter(rightChar)) {
+      left++;
+    } else {
+      left++;
+      right--;
+    }
+  }
+  return arr.join('');
+};
+
+console.log(reverseOnlyLetter('Test1ng-Leet=code-Q!'));

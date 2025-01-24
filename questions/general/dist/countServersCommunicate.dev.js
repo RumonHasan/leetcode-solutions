@@ -101,6 +101,39 @@ var answerQueries = function answerQueries(nums, queries) {
   }
 
   return result;
+}; //console.log(answerQueries([4, 5, 2, 1], [3, 10, 21]));
+
+
+var reverseOnlyLetter = function reverseOnlyLetter(s) {
+  var isCharacterALetter = function isCharacterALetter(_char) {
+    return /[a-zA-Z]/.test(_char);
+  };
+
+  var arr = s.split('');
+  var left = 0;
+  var right = s.length - 1;
+
+  while (left < right) {
+    var leftChar = arr[left];
+    var rightChar = arr[right];
+
+    if (isCharacterALetter(leftChar) && isCharacterALetter(rightChar)) {
+      var temp = leftChar;
+      arr[left] = arr[right];
+      arr[right] = temp;
+      left++;
+      right--;
+    } else if (isCharacterALetter(leftChar) && !isCharacterALetter(rightChar)) {
+      right--;
+    } else if (!isCharacterALetter(leftChar) && isCharacterALetter(rightChar)) {
+      left++;
+    } else {
+      left++;
+      right--;
+    }
+  }
+
+  return arr.join('');
 };
 
-console.log(answerQueries([4, 5, 2, 1], [3, 10, 21]));
+console.log(reverseOnlyLetter('Test1ng-Leet=code-Q!'));
