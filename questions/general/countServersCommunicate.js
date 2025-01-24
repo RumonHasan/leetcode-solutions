@@ -60,4 +60,29 @@ const smallerNumbersThanCurrent = (nums) => {
   return result;
 };
 
-console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
+//console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
+const answerQueries = (nums, queries) => {
+  let result = new Array(queries.length).fill(0);
+  nums.sort((a, b) => a - b);
+  for (let queryIndex in queries) {
+    let total = 0;
+    let counter = 0;
+    for (let i = 0; i < nums.length; i++) {
+      const currNum = nums[i];
+      total += currNum;
+      counter++;
+      if (total > queries[queryIndex]) {
+        break;
+      }
+      // reaches end case then add one plus the entire length
+      if (i === nums.length - 1) {
+        counter++;
+      }
+    }
+    result[Number(queryIndex)] = counter - 1;
+  }
+
+  return result;
+};
+
+console.log(answerQueries([4, 5, 2, 1], [3, 10, 21]));

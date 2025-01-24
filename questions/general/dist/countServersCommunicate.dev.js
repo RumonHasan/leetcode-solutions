@@ -69,6 +69,38 @@ var smallerNumbersThanCurrent = function smallerNumbersThanCurrent(nums) {
 
 
   return result;
+}; //console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
+
+
+var answerQueries = function answerQueries(nums, queries) {
+  var result = new Array(queries.length).fill(0);
+  nums.sort(function (a, b) {
+    return a - b;
+  });
+
+  for (var queryIndex in queries) {
+    var total = 0;
+    var counter = 0;
+
+    for (var i = 0; i < nums.length; i++) {
+      var currNum = nums[i];
+      total += currNum;
+      counter++;
+
+      if (total > queries[queryIndex]) {
+        break;
+      } // reaches end case then add one plus the entire length
+
+
+      if (i === nums.length - 1) {
+        counter++;
+      }
+    }
+
+    result[Number(queryIndex)] = counter - 1;
+  }
+
+  return result;
 };
 
-console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
+console.log(answerQueries([4, 5, 2, 1], [3, 10, 21]));
