@@ -122,4 +122,87 @@ const maxFreq = (s, maxLetters, minSize, maxSize) => {
  * Need two maps count string chars and one for counting substring within map
  * Substrings cannot exceed max of minSize
  */
-console.log(maxFreq('aababcaab', 2, 3, 4));
+//console.log(maxFreq('aababcaab', 2, 3, 4));
+
+const rearrangeCharacters = (s, target) => {
+  let count = 0;
+  let sMap = new Map();
+  let tSet = new Set([...target.split('')]);
+
+  for (const char of s) {
+    if (tSet.has(char)) {
+      sMap.set(char, (sMap.get(char) || 0) + 1);
+    }
+  }
+  // create target word and check
+  while (sMap.get(target[0]) > 0) {
+    let localString = '';
+    for (let i = 0; i < target.length; i++) {
+      const targetChar = target[i];
+
+      // reducing map here so it ejects the while when target first char hits 0
+      if (sMap.has(targetChar)) {
+        localString += targetChar;
+        sMap.set(targetChar, sMap.get(targetChar) - 1);
+        if (sMap.get(targetChar) === 0) {
+          sMap.delete(targetChar);
+        }
+      }
+    }
+    console.log(localString, sMap);
+    if (localString === target) {
+      count++;
+    }
+  }
+
+  return count;
+};
+
+//console.log(rearrangeCharacters('abcba', 'abc'));
+
+const maxUniqueSplits = (s) => {
+  let set = new Set();
+  // using backtracking to get all combinations
+  const dfs = (index, set) => {
+    if (index === s.length) {
+      return 0;
+    }
+    let maxCount = 0; // checking dfs for every subsection
+    for (let i = index; i < s.length; i++) {
+      const substring = s.slice(index, i + 1);
+      if (!set.has(substring)) {
+        set.add(substring);
+        maxCount = Math.max(maxCount, 1 + dfs(i + 1, set));
+        set.delete(substring); // to enable bactracking
+      }
+    }
+    return maxCount;
+  };
+  return dfs(0, set);
+};
+
+//console.log(maxUniqueSplits('aa'));
+
+// have to return the kth string
+const getHappyStrings = (n, k) => {
+  let letters = ['a', 'b', 'c'];
+  let happyStrings = [];
+
+  const dfs = (current, length) => {
+    if (length === n) {
+      happyStrings.push(current);
+      return;
+    }
+
+    for (const char of letters) {
+      if (current[current.length - 1] !== char || current.length === 0) {
+        dfs(current + char, length + 1); // it ends if its base case length
+      }
+    }
+  };
+  dfs('', 0);
+  happyStrings.sort((a, b) => a.localeCompare(b));
+  return happyStrings[k - 1] === undefined ? '' : happyStrings[k - 1];
+};
+
+console.log(getHappyStrings(1, 3));
