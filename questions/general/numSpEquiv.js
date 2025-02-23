@@ -14,6 +14,7 @@ const specialEquiv = (words) => {
         odd.push(currChar);
       }
     }
+    // sorting of even and odd strings here is needed in order to check the over all completed string
     const combinedSortedString = [...even.sort(), ...odd.sort()].join('');
     map.set(combinedSortedString, (map.get(combinedSortedString) || 0) + 1);
     if (map.size > maxGroupCount) {
@@ -31,7 +32,7 @@ const specialEquiv = (words) => {
 const maxRepeating = (sequence, word) => {
   let result = '';
   let repeatCounter = 0;
-
+  // using a simple while loop to check whether result length has exceeded the sequence or not ... hence the loop stops after checking
   while (result.length <= sequence.length + 1) {
     result += word;
     if (sequence.includes(result)) {
