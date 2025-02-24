@@ -30,3 +30,33 @@ const canFormArray = (arr, pieces) => {
 
 // using a look up emthod by using the first key of the array as the store
 //console.log(canFormArray([91, 4, 64, 78], [[78], [4, 64], [91]]));
+
+// two pointer medium approach
+const arrayStringsAreEqual = (word1, word2) => {
+  let w1 = 0;
+  let w2 = 0;
+  let i = 0;
+  let j = 0;
+
+  while (w1 < word1.length && w2 < word2.length) {
+    if (word1[w1][i] !== word2[w2][j]) {
+      // initial check
+      return false;
+    }
+    i++; // incrementing to next char i
+    if (i === word1[w1].length) {
+      w1++; // incrementing to next word
+      i = 0;
+    }
+    // incrementing j to next check
+    j++;
+    if (j === word2[w2].length) {
+      w2++; // incrementing to next word
+      j = 0;
+    }
+  }
+
+  return w1 === word1.length && w2 === word2.length;
+};
+
+console.log(arrayStringsAreEqual(['ab', 'c'], ['a', 'bc']));
