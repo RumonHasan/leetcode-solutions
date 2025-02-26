@@ -182,3 +182,22 @@ console.log(
     ]
   )
 );
+
+const completeHours = (hours) => {
+  let map = new Map();
+  let counter = 0;
+  for (let i = 0; i < hours.length; i++) {
+    const currHour = hours[i] % 24;
+    const complement = (24 - currHour) % 24;
+
+    // Check if we have seen the complement before
+    if (map.has(complement)) {
+      counter += map.get(complement); // adds one if the compliment has been seen
+    }
+
+    // Update the frequency of the current hour
+    map.set(currHour, (map.get(currHour) || 0) + 1);
+  }
+
+  return counter;
+};
