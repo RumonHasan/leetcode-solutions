@@ -74,4 +74,111 @@ const numOfSubarrays = (arr) => {
   return finalCounter % MOD;
 };
 
-console.log(numOfSubarrays([1, 3, 5]));
+//console.log(numOfSubarrays([1, 3, 5]));
+
+// getting min sum and max sum and comparing with the abs version
+const maxAbsoluteSum = (nums) => {
+  let maxEnding = nums[0];
+  let minEnding = nums[0];
+
+  if (nums.length === 1) {
+    return Math.abs(nums[0]);
+  }
+
+  let resMax = maxEnding;
+  let resMin = minEnding;
+
+  for (let i = 1; i < nums.length; i++) {
+    const currNum = nums[i];
+    maxEnding = Math.max(currNum, maxEnding + currNum);
+    if (resMax <= maxEnding) resMax = maxEnding;
+  }
+
+  for (let i = 1; i < nums.length; i++) {
+    const currNum = nums[i];
+    minEnding = Math.min(currNum, minEnding + currNum);
+    if (resMin >= minEnding) resMin = minEnding;
+  }
+
+  console.log(resMax, resMin);
+
+  return Math.max(Math.abs(resMax), Math.abs(resMin));
+};
+
+//console.log(maxAbsoluteSum([2, -1]));
+
+const shortestDistanceToChar = (s, c) => {
+  let charForce = 0;
+  const arrCreator = (len) => {
+    return new Array(len).fill(0);
+  };
+  let distance = arrCreator(s.length);
+  let left = arrCreator(s.length);
+  let right = arrCreator(s.length);
+  // from left to right check
+  for (let i = 0; i < s.length; i++) {
+    const currChar = s[i];
+    if (currChar === c) {
+      charForce = s.length;
+    } else {
+      charForce = Math.max(0, charForce - 1);
+    }
+    left[i] = charForce;
+  }
+  charForce = 0;
+  // from right to left
+  for (let i = s.length - 1; i >= 0; i--) {
+    const currChar = s[i];
+    if (currChar === c) {
+      charForce = s.length;
+    } else {
+      charForce = Math.max(0, charForce - 1);
+    }
+    right[i] = charForce;
+  }
+  charForce = s.length;
+
+  for (let i = 0; i < distance.length; i++) {
+    if ((left[i] === right[i]) === charForce) {
+      distance[i] = 0;
+    } else {
+      const maxClose = Math.max(right[i], left[i]);
+      distance[i] = charForce - maxClose;
+    }
+  }
+
+  return distance;
+};
+
+// console.log(shortestDistanceToChar('loveleetcode', 'e'));
+
+const checkDistances = (s, distance) => {
+  let map = new Map();
+  for (let i = 0; i < distance.length; i++) {
+    const char = String.fromCharCode(97 + i);
+    map.set(char, [distance[i]]);
+  }
+  for (let i = 0; i < s.length; i++) {
+    const currChar = s[i];
+    if (map.get(currChar).length === 2) {
+      map.get(currChar).push(i - map.get(currChar)[1] - 1);
+    } else {
+      map.get(currChar)[1] = i;
+    }
+    const currVal = map.get(currChar);
+    if (currVal.length === 3 && currVal[2] !== currVal[0]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log(
+  checkDistances(
+    'abaccb',
+    [
+      1, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0,
+    ]
+  )
+);
