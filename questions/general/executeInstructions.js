@@ -30,4 +30,34 @@ const executeInstructions = (n, startPos, s) => {
   return array;
 };
 
-console.log(executeInstructions(3, [0, 1], 'RRDDLU'));
+// console.log(executeInstructions(3, [0, 1], 'RRDDLU'));
+
+// reverse on parenthesis based string after every parenthesis opened
+const reverseParenthesis = (s) => {
+  console.log(s);
+
+  let stack = [];
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (char === ')') {
+      // if it finds an opening bracket then loop till closing it and reversing the string
+      let local = [];
+      // keep iterating till you find the opening bracket
+      while (stack.length && stack[stack.length - 1] !== '(') {
+        local.push(stack.pop());
+      }
+      // if local is filled then then add it to the curr stack
+      stack.pop(); // also popping the first opening bracket that comes up
+      // adding the chars to stack
+      for (let char of local) {
+        stack.push(char);
+      }
+    } else {
+      stack.push(char);
+    }
+  }
+  return stack.join('');
+};
+
+console.log(reverseParenthesis('(ed(et(oc))el)'));
