@@ -35,13 +35,41 @@ const minimumRounds = (tasks) => {
   return minCount;
 };
 
-console.log(
-  minimumRounds([
-    69, 65, 62, 64, 70, 68, 69, 67, 60, 65, 69, 62, 65, 65, 61, 66, 68, 61, 65,
-    63, 60, 66, 68, 66, 67, 65, 63, 65, 70, 69, 70, 62, 68, 70, 60, 68, 65, 61,
-    64, 65, 63, 62, 62, 62, 67, 62, 62, 61, 66, 69,
-  ])
-);
+// console.log(
+//   minimumRounds([
+//     69, 65, 62, 64, 70, 68, 69, 67, 60, 65, 69, 62, 65, 65, 61, 66, 68, 61, 65,
+//     63, 60, 66, 68, 66, 67, 65, 63, 65, 70, 69, 70, 62, 68, 70, 60, 68, 65, 61,
+//     64, 65, 63, 62, 62, 62, 67, 62, 62, 61, 66, 69,
+//   ])
+// );
 
 // 7 3 * 2 and 2 * 3
 //
+
+// get the zero filled subarrays
+const zeroFilledSubarrays = (nums) => {
+  let zeroCount = 0;
+  let subCount = 0;
+
+  // calculates based on total size
+  const subCounter = (n) => {
+    return Math.floor((n * (n + 1)) / 2);
+  };
+
+  for (let i = 0; i < nums.length; i++) {
+    const curr = nums[i];
+    if (curr === 0) {
+      zeroCount++;
+    } else if (curr !== 0) {
+      subCount += subCounter(zeroCount);
+      console.log(subCounter(zeroCount));
+      zeroCount = 0;
+    }
+    if (i === nums.length - 1) {
+      subCount += subCounter(zeroCount);
+    }
+  }
+  return subCount;
+};
+
+console.log(zeroFilledSubarrays([1, 3, 0, 0, 2, 0, 0, 4]));
