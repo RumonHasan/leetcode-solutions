@@ -34,3 +34,32 @@ const capacityToShipPackages = (weights, days) => {
 
 // binary search problem to check for the minimum capacity required to within <= 5 d days
 console.log(capacityToShipPackages([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
+
+// checking longest ones after deleting one element from it then calculating
+const longestOnesSubarray = (nums) => {
+  const limit = 1;
+  let end = 0;
+  let start = 0;
+  let zeroCount = 0;
+  let maxLen = 0;
+  while (end < nums.length) {
+    if (nums[end] === 0) {
+      zeroCount++;
+    }
+    // sliding the window
+    while (zeroCount > limit) {
+      if (nums[start] === 0) {
+        zeroCount--;
+      }
+      start++;
+    }
+    if (zeroCount <= limit) {
+      maxLen = Math.max(maxLen, end - start);
+    }
+    end++;
+  }
+
+  return maxLen;
+};
+
+console.log(longestOnesSubarray([1, 1, 1]));
