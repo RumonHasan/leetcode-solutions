@@ -94,3 +94,54 @@ const groupThePeople = (groupSizes) => {
 
 // the group sizes are also determined by the overall size of the ith person
 console.log(groupThePeople([3, 3, 3, 3, 3, 1, 3]));
+
+const isPossibleToDivide = (nums, k) => {
+  if (nums.length % k !== 0) return false;
+  nums.sort((a, b) => a - b); // option to exit early from consequtive numbers
+  let map = new Map();
+
+  for (let num of nums) {
+    map.set(num, (map.get(num) || 0) + 1);
+  }
+
+  for (let num of nums) {
+    let count = map.get(num);
+
+    if (count > 0) {
+      // if the occurence available then only check for the badges
+      for (let i = 0; i < k; i++) {
+        const currNum = num + i;
+
+        if (!map.has(currNum) || map.get(currNum) < count) {
+          return false;
+        }
+
+        map.set(currNum, map.get(currNum) - count); // subtracts the same number of count needed to remove all the badge group
+      }
+    }
+  }
+
+  return true;
+};
+
+const satisfiedCondition = (grid) => {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (j + 1 < grid[i].length && grid[i][j + 1] === grid[i][j]) {
+        return false;
+      }
+      if (i + 1 < grid.length && grid[i][j] !== grid[i + 1][j]) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+};
+
+console.log(
+  satisfiedCondition([
+    [1, 0, 2],
+    [1, 0, 2],
+  ])
+);
