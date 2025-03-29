@@ -38,3 +38,30 @@ const splitIntoSub = (nums) => {
 };
 
 console.log(splitIntoSub([1, 2, 3, 3, 4, 5]));
+
+// divide array for nums and k times
+const divideArray = (nums, k) => {
+  let map = new Map();
+
+  for (let num of nums) {
+    map.set(num, (map.get(num) || 0) + 1);
+  }
+
+  nums.sort((a, b) => a - b); // to make consequtive num more reachable
+
+  for (let i = 0; i < nums.length; i++) {
+    const currNum = nums[i];
+    if (map.get(currNum) === 0) continue;
+    for (let j = 0; j < k; j++) {
+      let newNum = currNum + j;
+
+      if (map.get(newNum) === 0 || !map.has(newNum)) return false;
+
+      map.set(newNum, map.get(newNum) - 1);
+    }
+  }
+
+  return true;
+};
+
+console.log(divideArray([1, 2, 3, 4], 3));
