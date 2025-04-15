@@ -27,4 +27,42 @@ const minimumOperations = (nums) => {
 };
 
 // suffix based distinct elements approach
-console.log(minimumOperations([6, 7, 8, 9]));
+//console.log(minimumOperations([6, 7, 8, 9]));
+
+// getting the substring of longest vowel in a series
+const longestVowelSubstring = (word) => {
+  let vowels = 'aeiou';
+  let max = 0;
+  let end = 0;
+
+  // main iteration loop
+  while (end < word.length) {
+    if (word[end] == 'a') {
+      let checkIndex = 0;
+      let start = end;
+      for (let i = 0; i < vowels.length; i++) {
+        const currVowel = vowels[i];
+
+        if (currVowel !== word[end]) {
+          break;
+        }
+        // for same chars
+        while (end < word.length && word[end] === currVowel) {
+          end++;
+        }
+        checkIndex = i;
+      }
+
+      if (checkIndex === vowels.length - 1) {
+        max = Math.max(max, end - start);
+      }
+    } else {
+      // skip if no letter found
+      end++;
+    }
+  }
+
+  return max;
+};
+
+console.log(longestVowelSubstring('aeiaaioaaaaeiiiiouuuooaauuaeiu'));
