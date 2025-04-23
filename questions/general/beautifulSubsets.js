@@ -1,5 +1,4 @@
 const beautifulSubsets = (nums, k) => {
-  let result = [];
   nums.sort((a, b) => a - b);
   let count = 0;
   // main dfs function to extract all the subsets
