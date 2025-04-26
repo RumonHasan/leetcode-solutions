@@ -16,7 +16,7 @@ const restoreIpAddress = (s) => {
       ipCollection.push(currSlicedIp);
     }
     if (currDots > 5) {
-      // optional for reducing run time
+      // optional for reducing run times
       // egde case if curr dots exceed limit
       return;
     }
@@ -43,4 +43,32 @@ const restoreIpAddress = (s) => {
 };
 
 // need to use dfs backtracking to find all the combinations of ip addresses and return the final collection
-console.log(restoreIpAddress('25525511135'));
+//console.log(restoreIpAddress('25525511135'));
+
+// count complete subarrays
+const countCompleteSubarrays = (nums) => {
+  let distinctCount = new Set([...nums]).size;
+  let end = 0;
+  let start = 0;
+  let hash = {};
+  let size = 0;
+
+  while (end < nums.length) {
+    hash[nums[end]] = (hash[nums[end]] || 0) + 1;
+    while (Object.keys(hash).length === distinctCount) {
+      size += nums.length - end; // cuz all the subarrays after the end is all valid
+      if (hash[nums[start]]) {
+        hash[nums[start]]--;
+        if (hash[nums[start]] === 0) {
+          delete hash[nums[start]];
+        }
+      }
+      start++;
+    }
+    end++;
+  }
+
+  return size;
+};
+
+console.log(countCompleteSubarrays([1, 3, 1, 2, 2]));
