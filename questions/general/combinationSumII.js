@@ -1,7 +1,6 @@
 const combinationSumII = (candidates, target) => {
   let result = [];
   candidates.sort((a, b) => a - b); // sorting required to ignore the adjacent duplicates
-
   // main dfs function to find subsets
   const dfs = (currIndex, currSum, subset) => {
     // base case if the currIndex reaches the last candidate then push to the result
