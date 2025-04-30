@@ -56,4 +56,37 @@ const letterCombination = (s) => {
   return counter;
 };
 
-console.log(letterCombination('AAB'));
+//console.log(letterCombination('AAB'));
+
+// count subarrays with k number of max elements within nums
+const countSubarrays = (nums, k) => {
+  let subCount = 0;
+  let maxCount = 0;
+
+  const MAX = Math.max(...nums);
+  console.log(MAX);
+
+  let end = 0;
+  let start = 0;
+
+  while (end < nums.length) {
+    if (nums[end] === MAX) {
+      maxCount++;
+    }
+
+    while (maxCount >= k) {
+      subCount += nums.length - end;
+
+      if (nums[start] === MAX) {
+        maxCount--;
+      }
+
+      start++;
+    }
+    end++;
+  }
+
+  return subCount;
+};
+
+console.log(countSubarrays([1, 3, 2, 3, 3], 2));
