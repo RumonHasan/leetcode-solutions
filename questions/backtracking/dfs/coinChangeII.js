@@ -1,15 +1,11 @@
 const coinChangeII = (amount, coins) => {
   let cache = new Map();
   const dfs = (currIndex, currSum) => {
-    if (currSum > amount) {
-      return 0;
-    }
     // main base case
     if (currSum === amount) {
       return 1;
     }
-
-    if (currIndex >= coins.length) {
+    if (currIndex >= coins.length || currSum > amount) {
       // if no combinations found and it reaches the end then return 0
       return 0;
     }
