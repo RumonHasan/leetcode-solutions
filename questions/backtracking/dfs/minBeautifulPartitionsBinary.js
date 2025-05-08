@@ -7,6 +7,7 @@ const beautifulBinaryPartitions = (s) => {
     return Math.abs(log5 - Math.round(log5)) < 1e-10;
   };
 
+  // main dfs function
   const dfs = (currIndex, currBinary) => {
     // traversed entire string but  no valid partitions
     if (currIndex >= s.length) {
