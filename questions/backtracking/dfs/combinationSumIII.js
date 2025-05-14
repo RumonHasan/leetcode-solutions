@@ -13,6 +13,7 @@ const combinationSumIII = (k, n) => {
     // include first
     currSub.push(currIndex);
     let includeSum = currIndex + currSum;
+    // include logic where the sum is also included and adjusted based on the skip char
     dfs(currIndex + 1, includeSum, currSub);
     currSub.pop();
     // skip
