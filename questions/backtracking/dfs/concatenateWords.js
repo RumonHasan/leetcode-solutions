@@ -18,7 +18,6 @@ const concatenateWords = (words) => {
     if (cache.has(currIndex) && !cache.get(currIndex)) {
       return cache.get(currIndex);
     }
-
     let foundValidPath = false; // to mark a default valid path
 
     // creating slices to check against the next series of words
@@ -41,7 +40,6 @@ const concatenateWords = (words) => {
         }
       }
     }
-
     cache.set(currIndex, foundValidPath); // stores the current valid path in the cache
     return foundValidPath;
   };
