@@ -12,6 +12,7 @@ const maxProduct = (s) => {
   };
 
   let maxLen = 0;
+
   const dfs = (currIndex, subOne, subTwo) => {
     // primary base case
     if (currIndex >= s.length) {
