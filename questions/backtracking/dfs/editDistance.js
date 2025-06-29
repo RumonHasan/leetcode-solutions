@@ -41,4 +41,35 @@ const editDistance = (word1, word2) => {
 /**
  * Using dfs memoization to insert remove and replace... only skip if the characters are already equal
  */
-console.log(editDistance('intention', 'execution'));
+//console.log(editDistance('intention', 'execution'));
+
+const lcs = (text1, text2) => {
+  const cache = new Map();
+
+  const dfs = (indexOne, indexTwo) => {
+    const cacheKey = indexOne * 1000 + indexTwo;
+    if (indexOne >= text1.length || indexTwo >= text2.length) {
+      return 0;
+    }
+
+    if (cache.has(cacheKey)) {
+      return cache.get(cacheKey);
+    }
+    let result = 0;
+    if (text1[indexOne] === text2[indexTwo]) {
+      result = 1 + dfs(indexOne + 1, indexTwo + 1);
+    } else {
+      result = Math.max(
+        dfs(indexOne + 1, indexTwo),
+        dfs(indexOne, indexTwo + 1)
+      );
+    }
+
+    cache.set(cacheKey, result);
+    return result;
+  };
+
+  return dfs(0, 0);
+};
+
+console.log(lcs('abcde', 'ace'));
