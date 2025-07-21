@@ -33,4 +33,8 @@ const maxCoins = (nums) => {
  * using dfs to try various triplet combinations
  *
  */
-console.log(maxCoins([3, 1, 5, 8]));
+//console.log(maxCoins([3, 1, 5, 8]));
+
+const targetSum = (nums, target) => {};
+
+console.log(targetSum());
